@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Linear Algebra: True/False Practice</title>
+
+  <!-- MathJax for LaTeX rendering -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <style>
+:root{
+  /* ===== Harvard Crimson Tech Theme ===== */
+
+  /* Background gradient */
+--bg0: #3a141b;   /* lighter top */
+--bg1: #6e1f2b;   /* brighter crimson bottom */
+
+  /* Cards */
+  --card: rgba(255,255,255,0.06);
+  --cardBorder: rgba(255,255,255,0.14);
+
+  --text: rgba(255,255,255,0.95);
+  --muted: rgba(255,255,255,0.70);
+
+  /* Crimson gradient buttons */
+  --primaryA: white;        /* Harvard crimson */
+  --primaryB: white;        /* lighter crimson */
+  --primaryHoverA: #8E1829;
+  --primaryHoverB: #A8323F;
+
+  /* Focus glow */
+  --ring: rgba(199,62,77,0.35);
+
+  --danger: #fb7185;
+  --success: #34d399;
+
+  --radius: 16px;
+  --shadow: 0 12px 30px rgba(0,0,0,0.45);
+  --shadow2: 0 8px 18px rgba(0,0,0,0.30);
+}
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+
+body{
+  margin: 0;
+  padding: 28px 18px 60px;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+background:
+  radial-gradient(1000px 500px at 20% 10%, rgba(255,255,255,0.18), transparent 60%),
+  radial-gradient(800px 400px at 85% 15%, rgba(255,255,255,0.12), transparent 55%),
+  linear-gradient(180deg, var(--bg0), var(--bg1));
+
+  .container{
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  h1{
+    margin: 0 0 8px;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+  }
+
+  .muted{
+    color: var(--muted);
+    margin-top: 0;
+    line-height: 1.5;
+  }
+
+  /* Cards */
+  .card{
+    border: 1px solid rgba(0,0,0,0.08);
+    background: #ffffff;
+    color: #111111;
+    border-radius: var(--radius);
+    padding: 18px;
+    margin: 16px 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  }
+  .card .muted{
+    color: #444;
+  }
+
+  .card strong {
+    color: #000;
+  } 
+  .card.hoverlift{
+    transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+  }
+  .card.hoverlift:hover{
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+    border-color: rgba(255,255,255,0.18);
+  }
+
+  .qhead{
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .qnum{ font-weight: 650; }
+
+  .choices{
+    margin-top: 12px;
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  /* Make radios feel nicer */
+  input[type="radio"]{
+    accent-color: var(--primaryB);
+    transform: translateY(1px);
+  }
+
+  /* Buttons */
+  button{
+    padding: 11px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(255,255,255,0.06);
+    color: var(--text);
+    cursor: pointer;
+    transition: transform 120ms ease, background 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+  }
+  button:hover{
+    background: rgba(255,255,255,0.10);
+    border-color: rgba(255,255,255,0.22);
+    transform: translateY(-1px);
+  }
+  button:focus{
+    outline: none;
+    box-shadow: 0 0 0 4px var(--ring);
+  }
+  button:disabled{
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  button.primary{
+    border: 1px solid rgba(255,255,255,0.16);
+    background: linear-gradient(135deg, var(--primaryA), var(--primaryB));
+    color: rgba(10,14,22,0.95);
+    font-weight: 650;
+  }
+  button.primary:hover{
+    background: linear-gradient(135deg, var(--primaryHoverA), var(--primaryHoverB));
+  }
+
+  button.secondary{
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.08);
+  }
+
+.start-wrapper{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.start-button{
+  padding: 16px 32px;
+  font-size: 18px;
+  border-radius: 14px;
+  min-width: 220px;
+  letter-spacing: 0.3px;
+}
+
+  /* Result blocks */
+.result{
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: #f8f9fa;
+  color: #111;
+}
+
+.result.correct{
+  border-color: #34d399;
+  background: #ecfdf5;
+}
+
+.result.incorrect{
+  border-color: #fb7185;
+  background: #fef2f2;
+}
+
+.explain{
+  margin-top: 8px;
+  color: #333;
+}  .score{ font-size: 18px; font-weight: 750; margin: 18px 0 8px; }
+
+  .topbar{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 16px 0;
+  }
+
+  .footerbar{
+    margin: 22px 0 60px;
+    display: flex;
+    justify-content: flex-end;
+    position: sticky;
+    bottom: 12px;
+  }
+  .footerbar > button{
+    box-shadow: var(--shadow2);
+  }
+
+  .hidden{ display: none; }
+
+  .notice{
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: var(--radius);
+    padding: 14px;
+    background: rgba(255,255,255,0.06);
+    margin: 16px 0;
+  }
+
+  .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+
+  /* Optional little badges (you can use these anywhere) */
+  .pill{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 13px;
+    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(255,255,255,0.06);
+    color: var(--muted);
+  }
+</style>
+
+  <!-- Question bank (separate file) -->
+  <script src="./questions.js"></script>
+</head>
+<body>
+  <div class="container">
+  <h1>Linear Algebra True/False Practice</h1>
+
+  <!-- Start screen -->
+  <div id="startScreen" class="card">
+    <p class="muted">
+      Hello! This practice gives you the opportunity to test yourself and answer <strong>10 random True/False questions</strong> from a preset bank.
+      When you submit, you’ll see which were correct and the explanations.
+    </p>
+    <div id="rateLimitBox" class="notice hidden"></div>
+<div class="start-wrapper">
+  <button id="startBtn" class="primary start-button">Start Practice</button>
+</div>
+    <p class="muted">
+      Note: Attempts are limited to <strong>one every 10 minutes</strong> on this device/browser.
+    </p>
+  </div>
+
+  <!-- Quiz screen -->
+  <div id="quizScreen" class="hidden">
+    <p class="muted">Answer the following 10 questions, then click submit at the bottom.</p>
+    <div id="quiz"></div>
+    <div id="summary"></div>
+
+    <!-- Submit button at bottom -->
+    <div class="footerbar">
+      <button id="submitBtn" class="primary">Submit</button>
+    </div>
+  </div>
+
+<script>
+  // ----------------------------
+  // Config
+  // ----------------------------
+  const ATTEMPT_COOLDOWN_MS = 0 //10 * 60 * 1000; // 10 minutes
+  const ATTEMPT_KEY = "la_tf_last_attempt_started_at_ms";
+
+  // ----------------------------
+  // Load bank (from questions.js)
+  // ----------------------------
+  const QUESTION_BANK = (window.QUESTION_BANK ?? []);
+  if (!Array.isArray(QUESTION_BANK) || QUESTION_BANK.length === 0) {
+    console.warn("QUESTION_BANK is empty or missing. Check questions.js");
+  }
+
+  // ----------------------------
+  // Helpers
+  // ----------------------------
+  function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function pickRandomQuestions(k) {
+    const shuffled = shuffle(QUESTION_BANK);
+    return shuffled.slice(0, Math.min(k, shuffled.length));
+  }
+
+  function msRemaining() {
+    const last = Number(localStorage.getItem(ATTEMPT_KEY));
+    if (!Number.isFinite(last) || last <= 0) return 0;
+    const elapsed = Date.now() - last;
+    return Math.max(0, ATTEMPT_COOLDOWN_MS - elapsed);
+  }
+
+  function fmtTime(ms) {
+    const totalSec = Math.ceil(ms / 1000);
+    const min = Math.floor(totalSec / 60);
+    const sec = totalSec % 60;
+    return `${min}:${String(sec).padStart(2, "0")}`;
+  }
+
+  function typesetMath() {
+    // Re-run MathJax after DOM updates
+    if (window.MathJax?.typesetPromise) {
+      window.MathJax.typesetPromise();
+    }
+  }
+
+  // ----------------------------
+  // State
+  // ----------------------------
+  let current = [];
+  let responses = {}; // idx -> true/false
+
+  // ----------------------------
+  // Elements
+  // ----------------------------
+  const startScreen = document.getElementById("startScreen");
+  const quizScreen = document.getElementById("quizScreen");
+  const startBtn = document.getElementById("startBtn");
+  const submitBtn = document.getElementById("submitBtn");
+  const quizEl = document.getElementById("quiz");
+  const summaryEl = document.getElementById("summary");
+  const rateLimitBox = document.getElementById("rateLimitBox");
+
+  let countdownTimer = null;
+
+  function showRateLimitNotice() {
+    const rem = msRemaining();
+    if (rem <= 0) {
+      rateLimitBox.classList.add("hidden");
+      startBtn.disabled = false;
+      return;
+    }
+
+    rateLimitBox.classList.remove("hidden");
+    rateLimitBox.innerHTML = `
+      <div><strong>Attempt limit reached.</strong></div>
+      <div>Please wait <span class="mono">${fmtTime(rem)}</span> before starting a new attempt.</div>
+    `;
+    startBtn.disabled = true;
+
+    if (countdownTimer) clearInterval(countdownTimer);
+    countdownTimer = setInterval(() => {
+      const r = msRemaining();
+      if (r <= 0) {
+        clearInterval(countdownTimer);
+        countdownTimer = null;
+        showRateLimitNotice();
+      } else {
+        rateLimitBox.querySelector(".mono").textContent = fmtTime(r);
+      }
+    }, 250);
+  }
+
+  // ----------------------------
+  // Rendering quiz
+  // ----------------------------
+  function renderQuiz() {
+    summaryEl.innerHTML = "";
+    quizEl.innerHTML = "";
+
+    current.forEach((q, idx) => {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      card.innerHTML = `
+        <div class="qhead">
+          <div class="qnum">Q${idx + 1}</div>
+        </div>
+        <div class="statement">${q.statement}</div>
+        <div class="choices">
+          <label>
+            <input type="radio" name="q${idx}" value="true" ${responses[idx] === true ? "checked" : ""}/>
+            True
+          </label>
+          <label>
+            <input type="radio" name="q${idx}" value="false" ${responses[idx] === false ? "checked" : ""}/>
+            False
+          </label>
+        </div>
+        <div id="feedback-${idx}"></div>
+      `;
+
+      card.querySelectorAll(`input[name="q${idx}"]`).forEach(input => {
+        input.addEventListener("change", (e) => {
+          responses[idx] = (e.target.value === "true");
+        });
+      });
+
+      quizEl.appendChild(card);
+    });
+
+    typesetMath();
+  }
+
+  function gradeQuiz() {
+    let correctCount = 0;
+
+    current.forEach((q, idx) => {
+      const picked = responses[idx];
+      const isAnswered = (picked === true || picked === false);
+      const isCorrect = isAnswered && (picked === q.answer);
+
+      if (isCorrect) correctCount++;
+
+      const feedback = document.getElementById(`feedback-${idx}`);
+      const correctText = q.answer ? "True" : "False";
+      const yourText = isAnswered ? (picked ? "True" : "False") : "No answer";
+
+      feedback.innerHTML = `
+        <div class="result ${isCorrect ? "correct" : "incorrect"}">
+          <div><strong>${isCorrect ? "Correct" : "Incorrect"}</strong></div>
+          <div>Your answer: ${yourText}</div>
+          <div>Correct answer: ${correctText}</div>
+          <div class="explain"><em>Explanation:</em> ${q.explanation ?? "—"}</div>
+        </div>
+      `;
+    });
+
+    summaryEl.innerHTML = `<div class="score">Score: ${correctCount} / ${current.length}</div>`;
+    typesetMath();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function startAttempt() {
+    // enforce cooldown
+    const rem = msRemaining();
+    if (rem > 0) {
+      showRateLimitNotice();
+      return;
+    }
+
+    // record attempt start time
+    localStorage.setItem(ATTEMPT_KEY, String(Date.now()));
+
+    // create new set
+    current = pickRandomQuestions(10);
+    responses = {};
+
+    // swap screens
+    startScreen.classList.add("hidden");
+    quizScreen.classList.remove("hidden");
+
+    renderQuiz();
+  }
+
+  // ----------------------------
+  // Events
+  // ----------------------------
+  startBtn.addEventListener("click", startAttempt);
+	let hasSubmitted = false;
+	
+	function handleSubmitButton() {
+	  if (!hasSubmitted) {
+		// First click → grade
+		gradeQuiz();
+		hasSubmitted = true;
+		submitBtn.textContent = "Back to Start";
+	  } else {
+		// Second click → return to start screen
+		quizScreen.classList.add("hidden");
+		startScreen.classList.remove("hidden");
+	
+		submitBtn.textContent = "Submit";
+		hasSubmitted = false;
+	
+		showRateLimitNotice();
+		window.scrollTo({ top: 0, behavior: "smooth" });
+	  }
+	}
+
+submitBtn.addEventListener("click", handleSubmitButton);	
+  // On load, show cooldown if needed
+  showRateLimitNotice();
+</script>
+</div>
+</body>
+</html>
