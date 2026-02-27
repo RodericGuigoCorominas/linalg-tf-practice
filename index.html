@@ -20,7 +20,7 @@
 
   /* Background gradient */
   --bg0: #b23a4b;   /* lighter top wash */
-  --bg1: #961e32;   /* your chosen crimson */
+  --bg1: #631421;   /* your chosen crimson */
 
   --text: rgba(255,255,255,0.95);
   --muted: rgba(255,255,255,0.70);
@@ -28,7 +28,7 @@
   /* Buttons */
   --primaryA: white;
   --primaryB: white;
-  --primaryHoverA: #8E1829;
+  --primaryHoverA: #631421;
   --primaryHoverB: #A8323F;
 
   /* Focus glow */
@@ -58,8 +58,8 @@ body{
     radial-gradient(700px 450px at 60% 40%, rgba(255,255,255,0.01), transparent 65%),
 
     /* subtle grid */
-    linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px),
+    linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px),
 
     /* reversed crimson base */
     linear-gradient(180deg, var(--bg1), var(--bg0));
@@ -167,8 +167,10 @@ button.secondary{
   color: rgba(10,14,22,0.95);
 }
 button.secondary:hover{
-  background: rgba(255,255,255,0.14);
+  background: linear-gradient(135deg, var(--primaryHoverA), var(--primaryHoverB));
+  color: rgba(255,255,255,0.95);
 }
+
 
 .start-wrapper{
   display: flex;
@@ -350,12 +352,14 @@ button.secondary:hover{
       const ALL_TAGS = [
         "Linear Systems",
         "Linear Transformations",
-        "Coordinates",
         "Geometric Transformations",
-        "Image Kernel and Rank Nullity",
-        "Determinants",
+        "Linear Combinations",
+        "Matrix Inverses",
+        "Coordinates",
+        "Image, Kernel and Rank Nullity",
         "Orthogonal Matrices",
-        "Least Squares"
+        "Least Squares",
+        "Determinants"
       ];
 
       const TAGS_KEY = "la_tf_selected_tags_v1";
