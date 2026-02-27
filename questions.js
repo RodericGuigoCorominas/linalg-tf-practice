@@ -363,12 +363,12 @@ window.QUESTION_BANK = [
   tags: ["Matrix Inverses", "Linear Combinations"]
 },
 
-{
-  statement: "If $\\vec{u}$ is a linear combination of $\\vec{v}$ and $\\vec{w}$, then $\\vec{w}$ must be a linear combination of $\\vec{u}$ and $\\vec{v}$.",
-  answer: false,
-  explanation: "For example, let $\\vec{u}=\\begin{bmatrix}1\\\\0\\end{bmatrix}$, $\\vec{v}=\\begin{bmatrix}1\\\\0\\end{bmatrix}$, and $\\vec{w}=\\begin{bmatrix}0\\\\1\\end{bmatrix}$. Then $\\vec{u}$ is a linear combination of $\\vec{v}$ and $\\vec{w}$, but $\\vec{w}$ is not a linear combination of $\\vec{u}$ and $\\vec{v}$.",
-  tags: ["Linear Combinations"]
-},
+// {
+//   statement: "If $\\vec{u}$ is a linear combination of $\\vec{v}$ and $\\vec{w}$, then $\\vec{w}$ must be a linear combination of $\\vec{u}$ and $\\vec{v}$.",
+//   answer: false,
+//   explanation: "For example, let $\\vec{u}=\\begin{bmatrix}1\\\\0\\end{bmatrix}$, $\\vec{v}=\\begin{bmatrix}1\\\\0\\end{bmatrix}$, and $\\vec{w}=\\begin{bmatrix}0\\\\1\\end{bmatrix}$. Then $\\vec{u}$ is a linear combination of $\\vec{v}$ and $\\vec{w}$, but $\\vec{w}$ is not a linear combination of $\\vec{u}$ and $\\vec{v}$.",
+//   tags: ["Linear Combinations"]
+// },
 
 {
   statement: "There is an invertible $2 \\times 2$ matrix $S$ such that $S^{-1}\\begin{bmatrix}0&1\\\\0&0\\end{bmatrix}S = \\begin{bmatrix}1&0\\\\0&0\\end{bmatrix}$.",
@@ -732,7 +732,7 @@ window.QUESTION_BANK = [
 {
   statement: "If $\\text{rref}(A)$ has a row of zeros, then $A\\vec{x}=\\vec{b}$ cannot have a unique solution.",
   answer: false,
-  explanation: "A zero row in $\\text{rref}(A)$ does not prevent a unique solution if the system is consistent and there are no free variables. For example, the augmented matrix $\\begin{bmatrix}1&0&\\vline&1\\\\0&1&\\vline&2\\\\0&0&\\vline&0\\end{bmatrix}$ has a unique solution even though $\\text{rref}(A)$ has a zero row.",
+  explanation: "A zero row in $\\text{rref}(A)$ does not prevent a unique solution if the system is consistent and there are no free variables. For example, the augmented matrix $\\begin{bmatrix}1&0&\\mid&1\\\\0&1&\\mid&2\\\\0&0&\\mid&0\\end{bmatrix}$ has a unique solution even though $\\text{rref}(A)$ has a zero row.",
   tags: ["Linear Systems"]
 },
 
@@ -869,6 +869,168 @@ window.QUESTION_BANK = [
   tags: ["Image Kernel and Rank Nullity"]
 },
 
+// Quiz 1
+
+{
+  statement: "A system of $n$ linear equations in $n$ unknowns has at most $1$ solution.",
+  answer: false,
+  explanation: "For example, the system $x+y=2$ and $2x+2y=4$ has infinitely many solutions. Thus a system of $n$ equations in $n$ unknowns can have more than one solution.",
+  tags: ["Linear Systems"]
+},
+
+{
+  statement: "Let $A$ be an $n \\times m$ matrix and $B = \\operatorname{rref}(A)$. Then, for every $\\vec{b}$ in $\\mathbb{R}^n$, the systems $A\\vec{x}=\\vec{b}$ and $B\\vec{x}=\\vec{b}$ have the same solutions.",
+  answer: false,
+  explanation: "Row operations change the right-hand side unless they are also applied to $\\vec b$. For example, if $A = \\begin{bmatrix} 2 & 0 \\\\ 0 & 2 \\end{bmatrix}$ and $B = I$, then $A\\vec x = \\vec b$ gives $\\vec x = \\tfrac12 \\vec b$, while $B\\vec x = \\vec b$ gives $\\vec x = \\vec b$, which are different when $\\vec b \\neq 0$.",
+  tags: ["Linear Systems"]
+},
+
+{
+  statement: "Let $A$ be an $n \\times m$ matrix and $B = \\operatorname{rref}(A)$. Then there is a $\\vec{b}$ in $\\mathbb{R}^n$ such that the systems $A\\vec{x}=\\vec{b}$ and $B\\vec{x}=\\vec{b}$ have the same solutions.",
+  answer: true,
+  explanation: "Take $\\vec b = \\vec 0$. Both systems reduce to the homogeneous system, and row operations do not change the solution set of $A\\vec x = 0$.",
+  tags: ["Linear Systems"]
+},
+
+{
+  statement: "If $A$ is an $n \\times m$ matrix and $A \\vec{x} = \\vec{b}$ has infinitely many solutions, then $m > n$.",
+  answer: false,
+  explanation: "For example, let $A = \\begin{bmatrix} 1 & 1 \\\\ 2 & 2 \\end{bmatrix}$ and $\\vec b = \\begin{bmatrix} 2 \\\\ 4 \\end{bmatrix}$. Here $n=m=2$, yet the system has infinitely many solutions.",
+  tags: ["Linear Systems"]
+},
+
+{
+  statement: "If $k\\in \\mathbb{R}$, then the function $T : \\mathbb{R}^n \\rightarrow \\mathbb{R}^n$ defined by $T(\\vec{x}) = k \\vec{x}$ is a linear transformation.",
+  answer: true,
+  explanation: "$T(\\vec x + \\vec y) = k(\\vec x + \\vec y) = k\\vec x + k\\vec y$ and $T(c\\vec x) = k(c\\vec x) = c(k\\vec x)$. Thus $T$ preserves addition and scalar multiplication.",
+  tags: ["Linear Transformations"]
+},
+
+{
+  statement: "The transformation $T : \\mathbb{R}^2 \\rightarrow \\mathbb{R}$ defined by $T\\left(\\begin{bmatrix} x_1 \\\\ x_2 \\end{bmatrix}\\right) = x_1 x_2$ is a linear transformation.",
+  answer: false,
+  explanation: "Linearity requires $T(c\\vec x) = cT(\\vec x)$. But $T\\left(2\\begin{bmatrix}1\\\\1\\end{bmatrix}\\right)=4$, while $2T\\left(\\begin{bmatrix}1\\\\1\\end{bmatrix}\\right)=2$, so $T$ is not linear.",
+  tags: ["Linear Transformations"]
+},
+
+// Quiz 2
+
+{
+  statement: "If $k\\in \\mathbb{R}$, then the three vectors $\\begin{bmatrix} -1 \\\\ 1 \\\\ 1 \\end{bmatrix}$, $\\begin{bmatrix} 1 \\\\ 1 \\\\ 1 \\end{bmatrix}$, and $\\begin{bmatrix} 1 \\\\ -1 \\\\ k \\end{bmatrix}$ form a basis of $\\mathbb{R}^3$.",
+  answer: false,
+  explanation: "If $k = -1$, then the third vector becomes $\\begin{bmatrix} 1 \\\\ -1 \\\\ -1 \\end{bmatrix}$, and the matrix with these vectors as columns has two identical rows after row reduction, giving a zero row. Thus the vectors are linearly dependent and do not form a basis.",
+  tags: ["Linear Combinations"]
+},
+
+{
+  statement: "For any two vectors $\\vec{x}_1$ and $\\vec{x}_2$, $\\operatorname{span}(\\vec{x}_1, \\vec{x}_1 - \\vec{x}_2, \\vec{x}_2) = \\operatorname{span}(\\vec{x}_1, \\vec{x}_2)$.",
+  answer: true,
+  explanation: "Any linear combination of $\\vec{x}_1$ and $\\vec{x}_2$ is clearly in the larger span. Conversely, any vector of the form $c_1\\vec{x}_1 + c_2(\\vec{x}_1 - \\vec{x}_2) + c_3\\vec{x}_2$ can be rewritten as $(c_1+c_2)\\vec{x}_1 + (-c_2+c_3)\\vec{x}_2$, which lies in $\\operatorname{span}(\\vec{x}_1, \\vec{x}_2)$.",
+  tags: ["Linear Combinations"]
+},
+
+{
+  statement: "$\\begin{bmatrix}1\\\\2\\end{bmatrix}$, $\\begin{bmatrix}3\\\\4\\end{bmatrix}$, and $\\begin{bmatrix}5\\\\6\\end{bmatrix}$ form a basis of $\\mathbb{R}^2$.",
+  answer: false,
+  explanation: "A basis of $\\mathbb{R}^2$ must contain exactly two linearly independent vectors. Any set of three vectors in $\\mathbb{R}^2$ is automatically linearly dependent.",
+  tags: ["Linear Combinations"]
+},
+
+{
+  statement: "If the vectors $\\vec{v}_1, \\vec{v}_2,\\dots, \\vec{v}_n$ form a basis of $\\mathbb{R}^n$ and $T:\\mathbb{R}^n\\rightarrow\\mathbb{R}^n$ is a linear transformation, then the vectors $T(\\vec{v}_1), T(\\vec{v}_2),\\dots, T(\\vec{v}_n)$ also form a basis of $\\mathbb{R}^n$.",
+  answer: false,
+  explanation: "This need not hold if $T$ is not invertible. For example, if $T(\\vec{x}) = \\vec{0}$ for all $\\vec{x}$, then all the images are zero and do not form a basis.",
+  tags: ["Linear Combinations"]
+},
+
+{
+  statement: "There are only finitely many $2 \\times 2$ matrices $A$ such that $A^2 = I$.",
+  answer: false,
+  explanation: "Any reflection matrix satisfies $A^2 = I$. Since there are infinitely many possible reflection lines in the plane, there are infinitely many such matrices.",
+  tags: ["Geometric Transformations"]
+},
+
+// Quiz 3
+
+{
+  statement: "If $A$, $B$, and $C$ are invertible $n \\times n$ matrices, then the inverse of $A^{-1}(BC)$ is $(B^{-1} C^{-1})A$.",
+  answer: false,
+  explanation: "Using $(XYZ)^{-1} = Z^{-1}Y^{-1}X^{-1}$, we have $(A^{-1}BC)^{-1} = C^{-1}B^{-1}(A^{-1})^{-1} = C^{-1}B^{-1}A$, not $(B^{-1}C^{-1})A$.",
+  tags: ["Matrix Inverses"]
+},
+
+{
+  statement: "If $A$ and $B$ are invertible $n \\times n$ matrices, then $A - B$ is invertible.",
+  answer: false,
+  explanation: "A counterexample is $A$ any invertible matrix, and $A = B$. Then $A-B = 0$, which is not invertible.",
+  tags: ["Matrix Inverses"]
+},
+
+{
+  statement: "Let $A$ be an $n \\times n$ matrix that has exactly one $1$ in each row and one $1$ in each column, and whose other entries are all $0$. Then $A$ must be invertible.",
+  answer: true,
+  explanation: "Such a matrix permutes the standard basis vectors, so it represents a permutation matrix. Permutation matrices are invertible; their inverses are their transposes.",
+  tags: ["Matrix Inverses"]
+},
+
+{
+  statement: "Suppose $T$ is a linear transformation $\\mathbb{R}^2 \\rightarrow \\mathbb{R}^2$ and $\\mathfrak{B}$ is a basis of $\\mathbb{R}^2$. If $T$ has $\\mathfrak{B}$-matrix $\\begin{bmatrix} 1 & 0\\\\ 0 & 0 \\end{bmatrix}$, then it is an orthogonal projection onto a line.",
+  answer: false,
+  explanation: "The matrix represents projection onto the span of the first basis vector relative to $\\mathfrak{B}$. It is an orthogonal projection only if the basis $\\mathfrak{B}$ is orthonormal. For a non-orthogonal basis, the projection need not be orthogonal.",
+  tags: ["Coordinates"]
+},
+
+{
+  statement: "Let $A$ be the matrix of a clockwise rotation by $30^\\circ$ followed by a reflection along the line $y=x$. Let $B$ be the matrix of a reflection along the line $y=x$ followed by a counterclockwise rotation by $30^\\circ$. Then $A^{-1}=B$.",
+  answer: true,
+  explanation: "Let $R$ be the matrix of counterclockwise rotation by $30^\\circ$ and $P$ the reflection across $y=x$. Then $A = PR^{-1}$ and $B = RP$. Computing $AB = PR^{-1}RP = P^2 = I$, since reflections satisfy $P^2=I$. Thus $A^{-1}=B$.",
+  tags: ["Coordinates"]
+},
+
+{
+  statement: "If $\\vec{v}_1, \\vec{v}_2$, and $\\vec{v}_3$ are vectors in $\\mathbb{R}^3$ such that no two of them are parallel, then $\\operatorname{span}(\\vec{v}_1, \\vec{v}_2, \\vec{v}_3)=\\mathbb{R}^3$.",
+  answer: false,
+  explanation: "The vectors could all lie in the same plane without any two being parallel. For example, $\\begin{bmatrix}1\\\\0\\\\0\\end{bmatrix}$, $\\begin{bmatrix}0\\\\1\\\\0\\end{bmatrix}$, and $\\begin{bmatrix}2\\\\3\\\\0\\end{bmatrix}$ are not pairwise parallel but span only a plane.",
+  tags: ["Linear Combinations"]
+},
+
+// Quiz 4
+
+{
+  statement: "The set $V = \\left\\{ \\begin{bmatrix} x \\\\ y \\end{bmatrix} : xy = 0 \\right\\}$ is a subspace of $\\mathbb{R}^2$.",
+  answer: false,
+  explanation: "$V$ is not closed under addition. For example, $\\begin{bmatrix}1\\\\0\\end{bmatrix}$ and $\\begin{bmatrix}0\\\\1\\end{bmatrix}$ are in $V$, but their sum $\\begin{bmatrix}1\\\\1\\end{bmatrix}$ is not, since $1 \\cdot 1 \\neq 0$.",
+  tags: ["Subspaces"]
+},
+
+{
+  statement: "If $2 \\vec{v}_1 - 3 \\vec{v}_2 + 4 \\vec{v}_3 = \\vec{v}_1 + 2 \\vec{v}_2 - \\vec{v}_3$, then $\\vec{v}_1, \\vec{v}_2, \\vec{v}_3$ must be linearly dependent.",
+  answer: true,
+  explanation: "Rewriting gives $\\vec{v}_1 - 5\\vec{v}_2 + 5\\vec{v}_3 = \\vec{0}$, which is a nontrivial linear combination equal to zero. Therefore the vectors are linearly dependent.",
+  tags: ["Linear Combinations"]
+},
+
+{
+  statement: "If $\\ker A = \\{\\vec{0}\\}$, then $A$ is invertible.",
+  answer: false,
+  explanation: "This is true only for square matrices. If $A$ has more rows than columns, it can have trivial kernel without being invertible. For example, $A = \\begin{bmatrix} 1 & 0\\\\ 0 & 1\\\\ 0 & 0 \\end{bmatrix}$ has trivial kernel but is not invertible.",
+  tags: ["Matrix Inverses", "Image, Kernel and Rank Nullity"]
+},
+
+{
+  statement: "If $A$ is a $5 \\times 7$ matrix, then the nullity of $A$ is at least 2.",
+  answer: true,
+  explanation: "By rank–nullity, $\\text{rank}(A) + \\text{nullity}(A) = 7$. Since the rank is at most 5, the nullity must be at least $7 - 5 = 2$.",
+  tags: ["Image, Kernel and Rank Nullity"]
+},
+
+{
+  statement: "The nullity of a projection onto a line is always 1.",
+  answer: false,
+  explanation: "The rank of a projection onto a line is 1. In $n$ dimensions, rank–nullity gives nullity $= n - 1$. Thus the nullity depends on the ambient dimension and is not always 1.",
+  tags: ["Image, Kernel and Rank Nullity"]
+},
+
 // Added additional
 {
   statement: "If $A$ and $B$ are invertible $n \\times n$ matrices, then $A+B$ is invertible.",
@@ -888,6 +1050,13 @@ window.QUESTION_BANK = [
   statement: "For any matrix $A$, if $A\\vec x = A\\vec y$, then $\\vec x = \\vec y$.",
   answer: false,
   explanation: "This is only true if $A$ is invertible. A counterexample is a $2\\times2$ matrix of zeros, $\\vec{x}=\\vec{e}_1$ and $\\vec{y}=\\vec{e}_2$. Then $A\\vec{x}=A\\vec{y}$ bu $\\vec{x}\\neq\\vec{y}.",
+  tags: ["Matrix Inverses"]
+},
+
+{
+  statement: "If $A$ is a matrix with linearly independent columns, then $A$ is invertible.",
+  answer: false,
+  explanation: "This is only true if $A$ is $n\\times n$. A counterexample is $A=\\begin{bmatrix}1 & 0 \\\\ 0 & 1 \\\\ 0 & 0 \\end{bmatrix}$.",
   tags: ["Matrix Inverses"]
 },
 

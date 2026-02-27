@@ -17,21 +17,20 @@
   <style>
 :root{
   /* ===== Harvard Crimson Tech Theme ===== */
-
-  /* Background gradient */
   --bg0: #b23a4b;   /* lighter top wash */
   --bg1: #631421;   /* your chosen crimson */
+
+--bg0: #2a0b12;   /* deep crimson plum */
+--bg1: #070409;   /* near-black with warmth */
 
   --text: rgba(255,255,255,0.95);
   --muted: rgba(255,255,255,0.70);
 
-  /* Buttons */
   --primaryA: white;
   --primaryB: white;
   --primaryHoverA: #631421;
   --primaryHoverB: #A8323F;
 
-  /* Focus glow */
   --ring: rgba(199,62,77,0.35);
 
   --radius: 16px;
@@ -41,8 +40,9 @@
 
 * { box-sizing: border-box; }
 
-html { min-height: 100%; }
 body { min-height: 100vh; }
+
+
 
 body{
   margin: 0;
@@ -51,25 +51,40 @@ body{
   color: var(--text);
 
   background:
-    /* softer bottom-right glow */
-    radial-gradient(900px 550px at 85% 85%, rgba(255,255,255,0.05), transparent 60%),
+    /* soft corner light */
+    radial-gradient(900px 600px at 80% 85%, rgba(255,255,255,0.18), transparent 60%),
 
-    /* very subtle mid lift */
-    radial-gradient(700px 450px at 60% 40%, rgba(255,255,255,0.01), transparent 65%),
+    /* brushed metal streaks */
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.05) 0px,
+      rgba(0,0,0,0.06) 2px,
+      rgba(255,255,255,0.03) 4px,
+      rgba(0,0,0,0.05) 6px
+    ),
 
-    /* subtle grid */
-    linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px),
+    /* subtle tech grid */
+    linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px),
 
-    /* reversed crimson base */
-    linear-gradient(180deg, var(--bg1), var(--bg0));
+    /* metallic base gradient */
+    linear-gradient(
+      180deg,
+      #0f0f12 0%,
+      #2b2c31 28%,
+      #1a1b1f 55%,
+      #3a3b40 78%,
+      #121216 100%
+    );
 
   background-size:
     auto,
     auto,
-    44px 44px,
-    44px 44px,
+    56px 56px,
+    56px 56px,
     auto;
+
+  background-blend-mode: screen, overlay, normal, normal, normal;
 }
 
 .container{
@@ -120,7 +135,6 @@ h1{
   flex-wrap: wrap;
 }
 
-/* Make radios feel nicer */
 input[type="radio"]{
   accent-color: var(--primaryHoverB);
   transform: translateY(1px);
@@ -151,7 +165,6 @@ button:disabled{
 }
 
 button.primary{
-  border: 1.5px solid #000;
   background: linear-gradient(135deg, var(--primaryA), var(--primaryB));
   color: rgba(10,14,22,0.95);
   font-weight: 650;
@@ -162,7 +175,6 @@ button.primary:hover{
 }
 
 button.secondary{
-  border: 1.5px solid #000;
   background: rgba(255,255,255,0.08);
   color: rgba(10,14,22,0.95);
 }
@@ -170,7 +182,6 @@ button.secondary:hover{
   background: linear-gradient(135deg, var(--primaryHoverA), var(--primaryHoverB));
   color: rgba(255,255,255,0.95);
 }
-
 
 .start-wrapper{
   display: flex;
@@ -278,6 +289,48 @@ button.secondary:hover{
   margin-top: 10px;
   flex-wrap: wrap;
 }
+
+/* Attempt log UI */
+.logActions{
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.logTable{
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 14px;
+}
+.logTable th, .logTable td{
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  vertical-align: top;
+}
+.logTable th{
+  font-weight: 700;
+  color: #111;
+}
+.logTable td{
+  color: #111;
+}
+.pill{
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.12);
+  background: rgba(255,255,255,0.8);
+  margin: 2px 6px 2px 0;
+  font-size: 12px;
+}
+.smallMuted{
+  color: #555;
+  font-size: 13px;
+  margin-top: 6px;
+}
   </style>
 
   <!-- Question bank (separate file) -->
@@ -293,7 +346,7 @@ button.secondary:hover{
       <p class="muted">
         Hello! This practice gives you the opportunity to test yourself and answer
         <strong>10 random True/False questions</strong> from a preset bank.
-        When you submit, you’ll see which were correct and the explanations.
+        When you submit, you’ll see which were correct and the explanations. These questions are <strong>not</strong> AI generated.
       </p>
 
       <div class="tagBox">
@@ -312,6 +365,19 @@ button.secondary:hover{
         <button id="startBtn" class="primary start-button">Start Practice</button>
       </div>
 
+      <div class="logActions">
+        <button id="toggleLogBtn" class="secondary" type="button">Show attempt log</button>
+        <button id="clearLogBtn" class="secondary" type="button">Clear log</button>
+      </div>
+
+      <div id="attemptLogBox" class="notice hidden">
+        <div><strong>Attempt log (this device/browser)</strong></div>
+        <div id="attemptLogBody"></div>
+        <div class="smallMuted">
+          Stored locally in your browser (localStorage). Clearing site data or using a different browser/device will change what you see.
+        </div>
+      </div>
+
       <p class="muted">
         Note: Attempts are limited to <strong>one every 10 minutes</strong> on this device/browser.
       </p>
@@ -323,7 +389,6 @@ button.secondary:hover{
       <div id="quiz"></div>
       <div id="summary"></div>
 
-      <!-- Submit button at bottom -->
       <div class="footerbar">
         <button id="submitBtn" class="primary">Submit</button>
       </div>
@@ -333,10 +398,13 @@ button.secondary:hover{
       // ----------------------------
       // Config
       // ----------------------------
-      // Set to 10 * 60 * 1000 for real use:
-      const ATTEMPT_COOLDOWN_MS = 10 * 60 * 1000;
+      const ATTEMPT_COOLDOWN_MS = 0//10 * 60 * 1000;
       const ATTEMPT_KEY = "la_tf_last_attempt_started_at_ms";
       const MIN_QUESTIONS_PER_ATTEMPT = 10;
+
+      // Attempt logging
+      const ATTEMPT_LOG_KEY = "la_tf_attempt_log_v1";
+      const MAX_LOG_ENTRIES = 200;
 
       // ----------------------------
       // Load bank (from questions.js)
@@ -407,7 +475,6 @@ button.secondary:hover{
           `;
           startBtn.disabled = true;
         } else {
-          // Only hide if we are not on cooldown (cooldown message uses same box)
           if (msRemaining() <= 0) rateLimitBox.classList.add("hidden");
           startBtn.disabled = false;
         }
@@ -421,7 +488,6 @@ button.secondary:hover{
 
         function paint() {
           const selected = loadSelectedTags();
-          // show counts per tag (nice UX)
           const counts = Object.fromEntries(ALL_TAGS.map(t => [t, 0]));
           for (const q of QUESTION_BANK) {
             const tags = Array.isArray(q.tags) ? q.tags : [];
@@ -452,7 +518,6 @@ button.secondary:hover{
 
         tagOptionsEl.addEventListener("change", () => {
           saveSelectedTags(readSelectionFromDOM());
-          // If on cooldown, keep cooldown message; otherwise show availability
           showRateLimitNotice();
         });
 
@@ -468,8 +533,64 @@ button.secondary:hover{
           showRateLimitNotice();
         });
 
-        // initial
         showRateLimitNotice();
+      }
+
+      // ----------------------------
+      // Attempt log helpers (localStorage)
+      // ----------------------------
+      function loadAttemptLog() {
+        try {
+          const raw = localStorage.getItem(ATTEMPT_LOG_KEY);
+          const arr = raw ? JSON.parse(raw) : [];
+          return Array.isArray(arr) ? arr : [];
+        } catch {
+          return [];
+        }
+      }
+
+      function saveAttemptLog(entries) {
+        const trimmed = entries.slice(-MAX_LOG_ENTRIES);
+        localStorage.setItem(ATTEMPT_LOG_KEY, JSON.stringify(trimmed));
+      }
+
+      function safeUUID() {
+        return (crypto?.randomUUID
+          ? crypto.randomUUID()
+          : String(Date.now()) + "-" + Math.random().toString(16).slice(2)
+        );
+      }
+
+      function logAttemptStart({ selectedTags, questionCount, questionIds }) {
+        const log = loadAttemptLog();
+        const entry = {
+          id: safeUUID(),
+          startedAtMs: Date.now(),
+          selectedTags: [...selectedTags],
+          questionCount,
+          questionIds: questionIds ?? null,
+          submittedAtMs: null,
+          score: null,
+          total: null
+        };
+        log.push(entry);
+        saveAttemptLog(log);
+        return entry.id;
+      }
+
+      function logAttemptSubmit({ attemptId, score, total }) {
+        const log = loadAttemptLog();
+        const i = log.findIndex(e => e.id === attemptId);
+        if (i >= 0) {
+          log[i].submittedAtMs = Date.now();
+          log[i].score = score;
+          log[i].total = total;
+          saveAttemptLog(log);
+        }
+      }
+
+      function clearAttemptLog() {
+        localStorage.removeItem(ATTEMPT_LOG_KEY);
       }
 
       // ----------------------------
@@ -504,6 +625,14 @@ button.secondary:hover{
         return `${min}:${String(sec).padStart(2, "0")}`;
       }
 
+      function fmtDateTime(ms) {
+        try {
+          return new Date(ms).toLocaleString();
+        } catch {
+          return String(ms);
+        }
+      }
+
       function typesetMath() {
         if (window.MathJax?.typesetPromise) {
           window.MathJax.typesetPromise();
@@ -515,6 +644,7 @@ button.secondary:hover{
       // ----------------------------
       let current = [];
       let responses = {}; // idx -> true/false
+      let currentAttemptId = null;
 
       // ----------------------------
       // Elements
@@ -527,12 +657,16 @@ button.secondary:hover{
       const summaryEl = document.getElementById("summary");
       const rateLimitBox = document.getElementById("rateLimitBox");
 
+      const toggleLogBtn = document.getElementById("toggleLogBtn");
+      const clearLogBtn = document.getElementById("clearLogBtn");
+      const attemptLogBox = document.getElementById("attemptLogBox");
+      const attemptLogBody = document.getElementById("attemptLogBody");
+
       let countdownTimer = null;
 
       function showRateLimitNotice() {
         const rem = msRemaining();
 
-        // If on cooldown, show cooldown message and disable start
         if (rem > 0) {
           rateLimitBox.classList.remove("hidden");
           rateLimitBox.innerHTML = `
@@ -557,12 +691,75 @@ button.secondary:hover{
           return;
         }
 
-        // Not on cooldown: show tag availability / hide warning
         if (countdownTimer) {
           clearInterval(countdownTimer);
           countdownTimer = null;
         }
         updateStartAvailability();
+      }
+
+      // ----------------------------
+      // Attempt log UI (toggle + auto-refresh)
+      // ----------------------------
+      function renderAttemptLog() {
+        const log = loadAttemptLog();
+        const entries = log.slice().reverse(); // newest first
+
+        if (entries.length === 0) {
+          attemptLogBody.innerHTML = `<div>No attempts logged yet on this device/browser.</div>`;
+          return;
+        }
+
+        attemptLogBody.innerHTML = `
+          <table class="logTable">
+            <thead>
+              <tr>
+                <th>Started</th>
+                <th>Submitted</th>
+                <th>Score</th>
+                <th>Topics</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${entries.map(e => {
+                const started = fmtDateTime(e.startedAtMs);
+                const submitted = e.submittedAtMs ? fmtDateTime(e.submittedAtMs) : "—";
+                const score = (Number.isFinite(e.score) && Number.isFinite(e.total)) ? `${e.score}/${e.total}` : "—";
+                const topics = Array.isArray(e.selectedTags) && e.selectedTags.length
+                  ? e.selectedTags.map(t => `<span class="pill">${t}</span>`).join("")
+                  : `<span class="pill">none</span>`;
+
+                return `
+                  <tr>
+                    <td>${started}</td>
+                    <td>${submitted}</td>
+                    <td>${score}</td>
+                    <td>${topics}</td>
+                  </tr>
+                `;
+              }).join("")}
+            </tbody>
+          </table>
+        `;
+      }
+
+      function setLogVisible(visible) {
+        if (visible) {
+          renderAttemptLog();
+          attemptLogBox.classList.remove("hidden");
+          toggleLogBtn.textContent = "Hide attempt log";
+        } else {
+          attemptLogBox.classList.add("hidden");
+          toggleLogBtn.textContent = "Show attempt log";
+        }
+      }
+
+      function isLogVisible() {
+        return !attemptLogBox.classList.contains("hidden");
+      }
+
+      function refreshLogIfVisible() {
+        if (isLogVisible()) renderAttemptLog();
       }
 
       // ----------------------------
@@ -633,35 +830,50 @@ button.secondary:hover{
         summaryEl.innerHTML = `<div class="score">Score: ${correctCount} / ${current.length}</div>`;
         typesetMath();
         window.scrollTo({ top: 0, behavior: "smooth" });
+
+        if (currentAttemptId) {
+          logAttemptSubmit({
+            attemptId: currentAttemptId,
+            score: correctCount,
+            total: current.length
+          });
+          // Auto-refresh the log after each completed attempt (if visible)
+          refreshLogIfVisible();
+        }
       }
 
       function startAttempt() {
-        // enforce cooldown
         const rem = msRemaining();
         if (rem > 0) {
           showRateLimitNotice();
           return;
         }
 
-        // enforce enough questions for selected tags
         const pool = getFilteredQuestionPool();
         if (pool.length < MIN_QUESTIONS_PER_ATTEMPT) {
           updateStartAvailability();
           return;
         }
 
-        // record attempt start time
         localStorage.setItem(ATTEMPT_KEY, String(Date.now()));
 
-        // create new set
         current = pickRandomQuestions(MIN_QUESTIONS_PER_ATTEMPT);
         responses = {};
 
-        // swap screens
+        const selected = loadSelectedTags();
+        const questionIds = current.map(q => (q.id ?? null)); // only meaningful if you have q.id in questions.js
+        currentAttemptId = logAttemptStart({
+          selectedTags: selected,
+          questionCount: current.length,
+          questionIds
+        });
+
+        // If the log is visible, refresh so the new "started" row shows immediately
+        refreshLogIfVisible();
+
         startScreen.classList.add("hidden");
         quizScreen.classList.remove("hidden");
 
-        // reset submit button state
         hasSubmitted = false;
         submitBtn.textContent = "Submit";
 
@@ -672,6 +884,21 @@ button.secondary:hover{
       // Events
       // ----------------------------
       startBtn.addEventListener("click", startAttempt);
+
+      toggleLogBtn.addEventListener("click", () => {
+        setLogVisible(!isLogVisible());
+      });
+
+      clearLogBtn.addEventListener("click", () => {
+        const ok = confirm("Clear the attempt log on this device/browser?");
+        if (!ok) return;
+        clearAttemptLog();
+        refreshLogIfVisible();
+        if (!isLogVisible()) {
+          // If hidden, keep it hidden; button state unchanged.
+          // If visible, it will now show empty state via refresh.
+        }
+      });
 
       let hasSubmitted = false;
 
@@ -688,6 +915,9 @@ button.secondary:hover{
           hasSubmitted = false;
 
           showRateLimitNotice();
+          // Also refresh log if visible (useful if user cleared data in another tab, etc.)
+          refreshLogIfVisible();
+
           window.scrollTo({ top: 0, behavior: "smooth" });
         }
       }
@@ -697,6 +927,7 @@ button.secondary:hover{
       // On load
       renderTagOptions();
       showRateLimitNotice();
+      setLogVisible(false); // initialize toggle text consistently
     </script>
   </div>
 </body>
