@@ -234,7 +234,76 @@ window.QUESTION_BANK = [
   explanation: "Since $T(\\vec{0})=1 \\neq 0$, the function does not satisfy $T(\\vec{0})=0$, so it is not linear.",
   tags: ["Linear Transformations"]
 },
+// Mini Exam Spring 2026
+// ---------------------------
+{
+  statement: "The matrix $\\begin{bmatrix} 1 & 0 & 0\\\\ 0 & 1 & 0\\\\ 0 & 0 & 1\\\\ 0 & 0 & 1 \\end{bmatrix}$ is in reduced row echelon form.",
+  answer: false,
+  explanation: "In reduced row echelon form, each pivot column must have zeros everywhere except at the leading 1. Here the third column has a leading 1 in row 3, but it also has a 1 in row 4, so the matrix is not in reduced row echelon form.",
+  tags: ["Linear Systems"]
+},
 
+{
+  statement: "Let $A$ be a $4\\times 2$ matrix, and let $\\vec b\\in \\mathbb{R}^4$. If all the columns of $\\mathrm{rref}(A)$ have leading ones, then the linear system $A\\vec x=\\vec b$ must be consistent.",
+  answer: false,
+  explanation: "If both columns have leading ones, then $A$ has a pivot in each column, so there are no free variables. However, the system may still be inconsistent if the augmented matrix row reduces to a row of the form $[0\\;0\\mid c]$ with $c \\neq 0$. Therefore, the system need not be consistent for every $\\vec b$.",
+  tags: ["Linear Systems"]
+},
+
+{
+  statement: "Let $A$ be a $2\\times 3$ matrix and $\\vec b\\in\\mathbb{R}^2$. If the system $A\\vec x=\\vec b$ is consistent, then it must have infinitely many solutions.",
+  answer: true,
+  explanation: "A $2\\times 3$ matrix has at most two pivot columns. Since there are three variables, there must be at least one free variable. If the system is consistent, the presence of a free variable guarantees infinitely many solutions.",
+  tags: ["Linear Systems"]
+},
+
+{
+  statement: "The function $T:\\mathbb{R}^2\\to\\mathbb{R}^2$ defined by $T\\!\\left(\\begin{bmatrix}x\\\\y\\end{bmatrix}\\right)=\\begin{bmatrix} x+y\\\\ \\sin(y) \\end{bmatrix}$ is a linear transformation.",
+  answer: false,
+  explanation: "Linearity requires $T(\\vec 0)=\\vec 0$. But $T\\!\\left(\\begin{bmatrix}0\\\\0\\end{bmatrix}\\right)=\\begin{bmatrix}0\\\\0\\end{bmatrix}$ is satisfied; however, $\\sin(y)$ is not linear since $\\sin(y_1+y_2) \\neq \\sin(y_1)+\\sin(y_2)$ in general. Therefore $T$ is not linear.",
+  tags: ["Linear Transformations"]
+},
+
+{
+  statement: "There is exactly one possible $4\\times 3$ matrix in reduced row-echelon form with three leading ones.",
+  answer: true,
+  explanation: "If there are three leading ones in a $4\\times 3$ matrix, then each of the three columns must be a pivot column. The pivots must occur in rows 1, 2, and 3, and the fourth row must be all zeros. Reduced row echelon form forces all other entries in pivot columns to be zero. Thus the only possibility is $\\begin{bmatrix}1&0&0\\\\0&1&0\\\\0&0&1\\\\0&0&0\\end{bmatrix}$.",
+  tags: ["Linear Systems"]
+},
+{
+  statement: "Suppose $\\mathrm{rref}(A)=\\begin{bmatrix} 1&2&0\\\\ 0&0&1\\\\ 0&0&0 \\end{bmatrix}$ and $\\vec b=\\begin{bmatrix} 1\\\\0\\\\0 \\end{bmatrix}$. Then the system $A\\vec x=\\vec b$ must be consistent.",
+  answer: false,
+  explanation: "Row operations that produce $\\mathrm{rref}(A)$ must also be applied to $\\vec b$. Without knowing how $\\vec b$ transforms under those row operations, we cannot conclude consistency. It is possible that the augmented matrix row reduces to a row of the form $[0\\;0\\;0\\mid c]$ with $c \\neq 0$, making the system inconsistent.",
+  tags: ["Linear Systems"]
+},
+
+{
+  statement: "The vector $\\begin{bmatrix}1\\\\2\\end{bmatrix}$ is in $\\mathrm{span}\\!\\left( \\begin{bmatrix}3\\\\4\\end{bmatrix}, \\begin{bmatrix}-6\\\\-8\\end{bmatrix} \\right)$.",
+  answer: false,
+  explanation: "Since $\\begin{bmatrix}-6\\\\-8\\end{bmatrix} = -2\\begin{bmatrix}3\\\\4\\end{bmatrix}$, the span is all scalar multiples of $\\begin{bmatrix}3\\\\4\\end{bmatrix}$. The vector $\\begin{bmatrix}1\\\\2\\end{bmatrix}$ is not a scalar multiple of $\\begin{bmatrix}3\\\\4\\end{bmatrix}$, so it is not in the span.",
+  tags: ["Linear Combinations"]
+},
+
+{
+  statement: "Let $\\vec v_1,\\vec v_2,\\vec v_3$ be three vectors in $\\mathbb{R}^{100}$. Then $\\mathrm{span}(\\vec v_1,\\vec v_2,\\vec v_3)=\\mathrm{span}(\\vec v_1+\\vec v_2+\\vec v_3,\\vec v_2+\\vec v_3,\\vec v_3)$.",
+  answer: true,
+  explanation: "Each new vector is a linear combination of $\\vec v_1,\\vec v_2,\\vec v_3$, so the new span is contained in the original span. Conversely, we can solve for the original vectors: $\\vec v_3$ is already present, $\\vec v_2 = (\\vec v_2+\\vec v_3) - \\vec v_3$, and $\\vec v_1 = (\\vec v_1+\\vec v_2+\\vec v_3) - (\\vec v_2+\\vec v_3)$. Thus the spans are equal.",
+  tags: ["Linear Combinations"]
+},
+
+{
+  statement: "Let $P$ be the plane $x-y+z=0$ in $\\mathbb{R}^3$, and let $\\mathrm{ref}_P$ be reflection about $P$. Then for every $\\vec v\\in\\mathbb{R}^3$, $\\mathrm{ref}_P(\\mathrm{ref}_P(\\mathrm{ref}_P(\\vec v)))=\\mathrm{ref}_P(\\vec v)$.",
+  answer: true,
+  explanation: "Reflection about a plane is an involution, meaning $\\mathrm{ref}_P(\\mathrm{ref}_P(\\vec v)) = \\vec v$. Applying reflection three times gives $\\mathrm{ref}_P(\\vec v)$.",
+  tags: ["Geometric Transformations"]
+},
+
+{
+  statement: "There is exactly one possible $2\\times 4$ matrix in reduced row-echelon form with two leading ones.",
+  answer: false,
+  explanation: "The pivot columns could be any two of the four columns, and the non-pivot columns can contain arbitrary entries (subject to rref rules). Therefore, there are many possible $2\\times 4$ matrices in reduced row-echelon form with two leading ones.",
+  tags: ["Linear Systems"]
+},
 // Midterm 1 Practice 1
 // ---------------------------
 
@@ -798,6 +867,28 @@ window.QUESTION_BANK = [
   answer: true,
   explanation: "Because $A$ is invertible, $A$ maps $\\operatorname{im}(B)$ bijectively onto $\\operatorname{im}(AB)=A(\\operatorname{im}(B))$. In general this need not equal $\\operatorname{im}(B)$ unless $A$ preserves that subspace.",
   tags: ["Image Kernel and Rank Nullity"]
+},
+
+// Added additional
+{
+  statement: "If $A$ and $B$ are invertible $n \\times n$ matrices, then $A+B$ is invertible.",
+  answer: false,
+  explanation: "A counterexample for $n=3$ is $A=I_3$ and $B=-I_3$, which makes $A+B$ the zero matrix, and thus not invertible.",
+  tags: ["Matrix Inverses"]
+},
+
+{
+  statement: "If $A$ is invertible and $A\\vec x = A\\vec y$, then $\\vec x = \\vec y$.",
+  answer: true,
+  explanation: "Multiply both sides by $A^{-1}$ to obtain $\\vec x = \\vec y$. Invertible matrices are injective.",
+  tags: ["Matrix Inverses"]
+},
+
+{
+  statement: "For any matrix $A$, if $A\\vec x = A\\vec y$, then $\\vec x = \\vec y$.",
+  answer: false,
+  explanation: "This is only true if $A$ is invertible. A counterexample is a $2\\times2$ matrix of zeros, $\\vec{x}=\\vec{e}_1$ and $\\vec{y}=\\vec{e}_2$. Then $A\\vec{x}=A\\vec{y}$ bu $\\vec{x}\\neq\\vec{y}.",
+  tags: ["Matrix Inverses"]
 },
 
 ];
