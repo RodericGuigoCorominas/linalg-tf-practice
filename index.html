@@ -280,7 +280,7 @@ button.secondary:hover{
 
 .tagOptions input[type="checkbox"]{
   transform: translateY(1px);
-  accent-color: var(--bg1);
+  accent-color: var(--primaryHoverB); /* was var(--bg1) */
 }
 
 .tagActions{
@@ -398,7 +398,7 @@ button.secondary:hover{
       // ----------------------------
       // Config
       // ----------------------------
-      const ATTEMPT_COOLDOWN_MS = 0//10 * 60 * 1000;
+      const ATTEMPT_COOLDOWN_MS = 10 * 60 * 1000;
       const ATTEMPT_KEY = "la_tf_last_attempt_started_at_ms";
       const MIN_QUESTIONS_PER_ATTEMPT = 10;
 
