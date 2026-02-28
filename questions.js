@@ -744,9 +744,9 @@ window.QUESTION_BANK = [
 },
 
 {
-  statement: "If $A\\vec{x}=\\vec{b}$ has infinitely many solutions, then $\\text{rref}(A)$ must have a row of zeros.",
+  statement: "If $A$ is q square matrix and $A\\vec{x}=\\vec{b}$ has infinitely many solutions, then $\\text{rref}(A)$ must have a row of zeros.",
   answer: true,
-  explanation: "Infinitely many solutions implies at least one free variable, so $\\operatorname{rank}(A)<n$ (number of columns). In rref this means there are fewer pivots than rows of $A$ can have, forcing at least one zero row in $\\text{rref}(A)$.",
+  explanation: "Infinitely many solutions implies at least one free variable, so $\\text{rank}(A)<n$ (number of columns). In rref this means there are fewer pivots than rows of $A$ can have, forcing at least one zero row in $\\text{rref}(A)$.",
   tags: ["Linear Systems"]
 },
 
