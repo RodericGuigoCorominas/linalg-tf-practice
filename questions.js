@@ -234,8 +234,9 @@ window.QUESTION_BANK = [
   explanation: "Since $T(\\vec{0})=1 \\neq 0$, the function does not satisfy $T(\\vec{0})=0$, so it is not linear.",
   tags: ["Linear Transformations"]
 },
+
 // Mini Exam Spring 2026
-// ---------------------------
+
 {
   statement: "The matrix $\\begin{bmatrix} 1 & 0 & 0\\\\ 0 & 1 & 0\\\\ 0 & 0 & 1\\\\ 0 & 0 & 1 \\end{bmatrix}$ is in reduced row echelon form.",
   answer: false,
@@ -304,8 +305,12 @@ window.QUESTION_BANK = [
   explanation: "The pivot columns could be any two of the four columns, and the non-pivot columns can contain arbitrary entries (subject to rref rules). Therefore, there are many possible $2\\times 4$ matrices in reduced row-echelon form with two leading ones.",
   tags: ["Linear Systems"]
 },
-// Midterm 1 Practice 1
 // ---------------------------
+// ---------------------------
+// ---------------------------
+// ---------------------------
+
+// Midterm 1 Practice 1
 
 {
   statement: "Any five vectors $\\vec{v}_1, \\vec{v}_2, \\vec{v}_3, \\vec{v}_4, \\vec{v}_5$ in $\\mathbb{R}^4$ are linearly dependent.",
@@ -362,13 +367,6 @@ window.QUESTION_BANK = [
   explanation: "If $c_1 A\\vec{u} + c_2 A\\vec{v} + c_3 A\\vec{w} = 0$, then $A(c_1\\vec{u} + c_2\\vec{v} + c_3\\vec{w})=0$. Since $A$ is invertible, this implies $c_1\\vec{u} + c_2\\vec{v} + c_3\\vec{w}=0$, and linear independence gives $c_1=c_2=c_3=0$.",
   tags: ["Matrix Inverses", "Linear Combinations"]
 },
-
-// {
-//   statement: "If $\\vec{u}$ is a linear combination of $\\vec{v}$ and $\\vec{w}$, then $\\vec{w}$ must be a linear combination of $\\vec{u}$ and $\\vec{v}$.",
-//   answer: false,
-//   explanation: "For example, let $\\vec{u}=\\begin{bmatrix}1\\\\0\\end{bmatrix}$, $\\vec{v}=\\begin{bmatrix}1\\\\0\\end{bmatrix}$, and $\\vec{w}=\\begin{bmatrix}0\\\\1\\end{bmatrix}$. Then $\\vec{u}$ is a linear combination of $\\vec{v}$ and $\\vec{w}$, but $\\vec{w}$ is not a linear combination of $\\vec{u}$ and $\\vec{v}$.",
-//   tags: ["Linear Combinations"]
-// },
 
 {
   statement: "There is an invertible $2 \\times 2$ matrix $S$ such that $S^{-1}\\begin{bmatrix}0&1\\\\0&0\\end{bmatrix}S = \\begin{bmatrix}1&0\\\\0&0\\end{bmatrix}$.",
@@ -448,7 +446,6 @@ window.QUESTION_BANK = [
 },
 
 // Midterm 1 Practice 2
-// ---------------------------
 
 {
   statement: "If the linear system $A\\vec{x}=\\vec{b}$ has exactly one solution, then the linear system $A\\vec{x}=\\vec{c}$ has exactly one solution for all vectors $\\vec{c}$.",
@@ -591,7 +588,6 @@ window.QUESTION_BANK = [
 },
 
 // Midterm 1 Practice 3
-// ---------------------------
 
 {
   statement: "There is a matrix $A$ such that $\\operatorname{rref}(A)$ has a row whose entries are all nonzero.",
@@ -727,7 +723,6 @@ window.QUESTION_BANK = [
 },
 
 // Midterm 1 Practice 4
-// ---------------------------
 
 {
   statement: "If $\\text{rref}(A)$ has a row of zeros, then $A\\vec{x}=\\vec{b}$ cannot have a unique solution.",
@@ -867,6 +862,774 @@ window.QUESTION_BANK = [
   answer: true,
   explanation: "Because $A$ is invertible, $A$ maps $\\operatorname{im}(B)$ bijectively onto $\\operatorname{im}(AB)=A(\\operatorname{im}(B))$. In general this need not equal $\\operatorname{im}(B)$ unless $A$ preserves that subspace.",
   tags: ["Image Kernel and Rank Nullity"]
+},
+
+// Midterm 1 Spring 2026
+
+{
+  statement: "For any two matrices $A$ and $B$, if $AB=I$, then $BA=I$.",
+  answer: false,
+  explanation: "For example, let $A=\\begin{bmatrix}1&0\\end{bmatrix}$ and $B=\\begin{bmatrix}1\\\\0\\end{bmatrix}$. Then $AB=[1]$, but $BA=\\begin{bmatrix}1&0\\\\0&0\\end{bmatrix}\\neq I$.",
+  tags: ["Matrix Inverses"]
+},
+
+{
+  statement: "Let $P$ be the matrix of a projection onto a subspace $V\\subset \\mathbb{R}^5$. If $\\dim V=4$, then $P$ is not invertible.",
+  answer: true,
+  explanation: "Since $\\dim V=4<5$, the kernel of $P$ has dimension 1. A linear transformation with nontrivial kernel is not invertible.",
+  tags: ["Linear Transformations"]
+},
+
+{
+  statement: "If $\\vec v_1,\\dots,\\vec v_{10}$ are linearly independent, then $\\vec v_1,\\dots,\\vec v_9$ are linearly independent.",
+  answer: true,
+  explanation: "Any subset of a linearly independent set is linearly independent.",
+  tags: ["Linear Combinations"]
+},
+
+{
+  statement: "If $\\vec v_1,\\dots,\\vec v_{10}$ are linearly dependent, then $\\vec v_1,\\dots,\\vec v_9$ are linearly dependent.",
+  answer: false,
+  explanation: "For example, let $\\vec v_1,\\dots,\\vec v_9$ be linearly independent and set $\\vec v_{10}=\\vec v_1$. Then the full set is dependent, but the first nine are independent.",
+  tags: ["Linear Combinations"]
+},
+
+{
+  statement: "Let $\\mathcal{B}=\\left\\{\\begin{bmatrix}1\\\\2\\end{bmatrix},\\begin{bmatrix}-1\\\\5\\end{bmatrix}\\right\\}$. If $[\\vec{x}]_{\\mathcal B}=\\begin{bmatrix}2\\\\3\\end{bmatrix}$, then $\\vec{x}=\\begin{bmatrix}-1\\\\19\\end{bmatrix}$.",
+  answer: true,
+  explanation: "We compute $\\vec x = 2\\begin{bmatrix}1\\\\2\\end{bmatrix}+3\\begin{bmatrix}-1\\\\5\\end{bmatrix}=\\begin{bmatrix}-1\\\\19\\end{bmatrix}$.",
+  tags: ["Coordinates"]
+},
+
+{
+  statement: "If $B$ is a $3\\times2$ matrix and $A$ is a $2\\times2$ invertible matrix, then $\\operatorname{nullity}(BA)=\\operatorname{nullity}(B)$.",
+  answer: true,
+  explanation: "Since $A$ is invertible, multiplication by $A$ does not change the dimension of the kernel. Thus $\\ker(BA)=A^{-1}(\\ker B)$ and the nullities are equal.",
+  tags: ["Image, Kernel and Rank Nullity"]
+},
+
+{
+  statement: "Let $A$ be an $8\\times10$ matrix. The nullity of $A$ is at most 2.",
+  answer: false,
+  explanation: "Rank–nullity gives $\\operatorname{nullity}(A)=10-\\operatorname{rank}(A)\\ge 10-8=2$, and it can be larger (for example if $A=0$).",
+  tags: ["Image, Kernel and Rank Nullity"]
+},
+
+{
+  statement: "Let $A$ be an $8\\times10$ matrix. The nullity of $A$ is at least 2.",
+  answer: true,
+  explanation: "Since $\\operatorname{rank}(A)\\le 8$, rank–nullity gives $\\operatorname{nullity}(A)=10-\\operatorname{rank}(A)\\ge2$.",
+  tags: ["Image, Kernel and Rank Nullity"]
+},
+
+{
+  statement: "Let $A$ be a $3\\times4$ matrix. If $\\operatorname{rref}(A)$ has a column of zeros, then a system $A\\vec x=\\vec b$ can never have a unique solution.",
+  answer: true,
+  explanation: "A zero column means there is a free variable. A consistent system then has infinitely many solutions; otherwise it has none. It can never have exactly one solution.",
+  tags: ["Linear Systems"]
+},
+
+{
+  statement: "If $\\{\\vec v_1,\\ldots,\\vec v_p\\}$ is a linearly dependent spanning set of a subspace $V$, then $\\dim V<p$.",
+  answer: true,
+  explanation: "Since the set is dependent, at least one vector can be removed while still spanning $V$. Thus $V$ has a spanning set with fewer than $p$ vectors.",
+  tags: ["Linear Combinations"]
+},
+
+{
+  statement: "If $A$ and $B$ are $2\\times2$ matrices such that $\\operatorname{im}(B)\\subseteq\\ker(A)$, then $\\operatorname{nullity}(AB)>\\operatorname{nullity}(B)$.",
+  answer: false,
+  explanation: "Let $B=0$. Then $\\operatorname{im}(B)=\\{0\\}\\subseteq\\ker(A)$, but $AB=0$ and both nullities equal 2.",
+  tags: ["Image, Kernel and Rank Nullity"]
+},
+
+{
+  statement: "Let $P_1$ and $P_2$ be perpendicular planes through the origin in $\\mathbb{R}^3$. If $S(\\vec x)=\\operatorname{proj}_{P_1}(\\operatorname{proj}_{P_2}(\\vec x))$, then $\\operatorname{im}(S)$ is one-dimensional.",
+  answer: true,
+  explanation: "Projecting onto $P_2$ gives vectors in $P_2$. Projecting those onto $P_1$ yields vectors in the line $P_1\\cap P_2$, which is one-dimensional.",
+  tags: ["Geometric Transformations"]
+},
+
+{
+  statement: "The plane $3x+2y-5z=1$ is a subspace of $\\mathbb{R}^3$.",
+  answer: false,
+  explanation: "A subspace must contain the zero vector, but $(0,0,0)$ does not satisfy the equation.",
+  tags: ["Linear Combinations"]
+},
+
+{
+  statement: "The composition of a shear and a reflection in $\\mathbb{R}^2$ is an invertible linear transformation.",
+  answer: true,
+  explanation: "Both a shear and a reflection are invertible linear transformations, and the composition of invertible linear transformations is invertible.",
+  tags: ["Geometric Transformations"]
+},
+
+{
+  statement: "If $M$ is a $3\\times3$ matrix satisfying $M^2=0$, then $\\operatorname{nullity}(M)\\ge2$.",
+  answer: true,
+  explanation: "Since $M^2=0$, we have $\\operatorname{im}(M)\\subseteq\\ker(M)$, so $\\operatorname{rank}(M)\\le\\operatorname{nullity}(M)$. Using rank–nullity, this implies $\\operatorname{nullity}(M)\\ge2$.",
+  tags: ["Image, Kernel and Rank Nullity"]
+},
+
+{
+  statement: "If $A$ is invertible and $AB=B$, then $A$ must be the identity matrix.",
+  answer: false,
+  explanation: "Take any invertible $A\\neq I$ and let $B=0$. Then $AB=0=B$, but $A$ is not the identity.",
+  tags: ["Matrix Inverses"]
+},
+
+{
+  statement: "Let $V\\subset\\mathbb{R}^4$ have basis $\\{\\vec v_1,\\vec v_2,\\vec v_3\\}$. Then $\\operatorname{proj}_V(\\vec x)=(\\vec x\\cdot\\vec v_1)\\vec v_1+(\\vec x\\cdot\\vec v_2)\\vec v_2+(\\vec x\\cdot\\vec v_3)\\vec v_3$ for all $\\vec x$.",
+  answer: false,
+  explanation: "This formula holds only if the basis is orthonormal.",
+  tags: ["Orthogonal Matrices"]
+},
+
+{
+  statement: "If $A$ is a $5\\times3$ matrix, then $\\operatorname{rref}(A)$ must have at least two rows of zeros.",
+  answer: true,
+  explanation: "There can be at most 3 pivot rows, so at least $5-3=2$ rows must be zero.",
+  tags: ["Linear Systems"]
+},
+
+{
+  statement: "If $\\vec v_1,\\vec v_2,\\vec v_3$ in $\\mathbb{R}^3$ are linearly dependent, then $\\vec v_3\\in\\operatorname{span}(\\vec v_1,\\vec v_2)$.",
+  answer: false,
+  explanation: "For example, if $\\vec v_1=\\vec v_2$, the set is dependent, but $\\vec v_3$ need not lie in their span.",
+  tags: ["Linear Combinations"]
+},
+
+{
+  statement: "Let $T:\\mathbb{R}^n\\to\\mathbb{R}^n$ be linear and let $\\mathcal B$ be a basis. If the $\\mathcal B$-matrix of $T$ is invertible, then $T$ is invertible.",
+  answer: true,
+  explanation: "An invertible matrix representation implies the linear transformation is bijective, hence invertible.",
+  tags: ["Linear Transformations"]
+},
+
+// Midterm 2 Practice 1
+
+{
+  statement: "If $\\lambda$ is an eigenvalue of $A$, then $\\lambda^3$ is an eigenvalue of $A^3$.",
+  answer: true,
+  explanation: "If $A\\vec v=\\lambda\\vec v$ for some nonzero $\\vec v$, then $A^3\\vec v = A(A(A\\vec v)) = A(A(\\lambda\\vec v)) = A(\\lambda^2\\vec v)=\\lambda^3\\vec v$, so $\\lambda^3$ is an eigenvalue of $A^3$.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If $A$ represents reflection over any line through the origin in $\\mathbb{R}^2$, then $\\det(A)$ must be $-1$.",
+  answer: true,
+  explanation: "A reflection in $\\mathbb{R}^2$ has eigenvalues $1$ (along the line) and $-1$ (perpendicular to it). The determinant is the product of the eigenvalues, so it is $-1$.",
+  tags: ["Geometric Transformations"]
+},
+
+{
+  statement: "For any $3\\times 7$ matrix $A$, the product $AA^T$ is diagonalizable.",
+  answer: true,
+  explanation: "$AA^T$ is symmetric since $(AA^T)^T = AA^T$. By the Spectral Theorem, every real symmetric matrix is diagonalizable (orthogonally).",
+  tags: ["Symmetric Matrices and the Spectral Theorem"]
+},
+
+{
+  statement: "Every real $70\\times 70$ matrix has a real eigenvector.",
+  answer: false,
+  explanation: "A real matrix can have no real eigenvalues (e.g., a block-diagonal matrix built from $2\\times 2$ rotation blocks), in which case it has no real eigenvectors.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "Every real $71\\times 71$ matrix has a real eigenvector.",
+  answer: true,
+  explanation: "A real $71\\times 71$ matrix has a degree-71 characteristic polynomial with real coefficients. Non-real roots come in conjugate pairs, so an odd-degree real polynomial must have at least one real root, giving a real eigenvalue and hence a real eigenvector.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If $M$ is a square matrix whose columns are orthogonal, then $M^TM$ is the identity matrix.",
+  answer: false,
+  explanation: "Orthogonal columns only guarantee $M^TM$ is diagonal, with diagonal entries equal to the squared column lengths. For example, $M=\\begin{bmatrix}1&0\\\\0&2\\end{bmatrix}$ has orthogonal columns but $M^TM=\\begin{bmatrix}1&0\\\\0&4\\end{bmatrix}\\neq I$.",
+  tags: ["Orthogonal Matrices"]
+},
+
+{
+  statement: "If $\\vec x$ and $\\vec y$ are any vectors in $\\mathbb{R}^n$, then $\\|\\vec x+\\vec y\\|^2+\\|\\vec x-\\vec y\\|^2 = 2(\\|\\vec x\\|^2+\\|\\vec y\\|^2)$.",
+  answer: true,
+  explanation: "Expanding with dot products gives $(\\vec x+\\vec y)\\cdot(\\vec x+\\vec y)+(\\vec x-\\vec y)\\cdot(\\vec x-\\vec y)=2(\\vec x\\cdot\\vec x+\\vec y\\cdot\\vec y)$.",
+  tags: ["Orthogonal Matrices"]
+},
+
+{
+  statement: "For any $n\\times n$ matrix $A$, $\\det(A)=\\det(\\operatorname{rref}(A))$.",
+  answer: false,
+  explanation: "Row operations used to reach rref can scale the determinant. For example, $A=\\begin{bmatrix}2&0\\\\0&1\\end{bmatrix}$ has $\\det(A)=2$, but $\\operatorname{rref}(A)=I$ has determinant $1$.",
+  tags: ["Determinants"]
+},
+
+{
+  statement: "If $\\vec x^{\\,*}$ is a least squares solution of $A\\vec x=\\vec b$, then $\\|\\vec b\\|^2 = \\|A\\vec x^{\\,*}\\|^2 + \\|\\vec b-A\\vec x^{\\,*}\\|^2$.",
+  answer: true,
+  explanation: "Least squares gives $A\\vec x^{\\,*}=\\operatorname{proj}_{\\operatorname{im}A}(\\vec b)$, so $A\\vec x^{\\,*}$ is orthogonal to $\\vec b-A\\vec x^{\\,*}$. The identity follows from the Pythagorean Theorem.",
+  tags: ["Least Squares"]
+},
+
+{
+  statement: "The $1$-eigenspace of a matrix $A$ is the same as the $1$-eigenspace of $\\operatorname{rref}(A)$.",
+  answer: false,
+  explanation: "Row reduction does not preserve eigenvectors/eigenspaces. For example, $A=2I_2$ has $1$-eigenspace $\\{\\vec 0\\}$, but $\\operatorname{rref}(A)=I_2$ has $1$-eigenspace $\\mathbb{R}^2$.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "Let $A$ be an $n\\times n$ matrix. Then $A$ is diagonalizable $\\Longleftrightarrow$ $A^T$ is diagonalizable.",
+  answer: true,
+  explanation: "If $A=SDS^{-1}$, then $A^T=(S^{-1})^T D (S^T)$, so $A^T$ is diagonalizable. Applying the same argument to $A^T$ gives the converse.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "There is a symmetric $2\\times 2$ matrix $A$ with $A\\begin{bmatrix}1\\\\2\\end{bmatrix}=\\begin{bmatrix}3\\\\6\\end{bmatrix}$ and $A\\begin{bmatrix}1\\\\1\\end{bmatrix}=\\begin{bmatrix}2\\\\2\\end{bmatrix}$.",
+  answer: false,
+  explanation: "These conditions make $\\begin{bmatrix}1\\\\2\\end{bmatrix}$ a $3$-eigenvector and $\\begin{bmatrix}1\\\\1\\end{bmatrix}$ a $2$-eigenvector. For a symmetric matrix, eigenspaces for distinct eigenvalues are orthogonal, but $\\begin{bmatrix}1\\\\2\\end{bmatrix}\\cdot\\begin{bmatrix}1\\\\1\\end{bmatrix}=3\\neq 0$.",
+  tags: ["Symmetric Matrices and the Spectral Theorem"]
+},
+
+{
+  statement: "If $A$ is a square matrix such that $A^{16}=0$, then $0$ is the only eigenvalue of $A$.",
+  answer: true,
+  explanation: "If $A\\vec v=\\lambda\\vec v$ with $\\vec v\\neq 0$, then $A^{16}\\vec v=\\lambda^{16}\\vec v$. But $A^{16}=0$, so $\\lambda^{16}=0$, hence $\\lambda=0$.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "Consider the linear continuous dynamical system $\\dfrac{d\\vec x}{dt}=A\\vec x$ with $\\vec x(0)=\\begin{bmatrix}1\\\\0\\end{bmatrix}$. If $\\lim_{t\\to\\infty} e^{At}\\vec x(0)=\\vec 0$, then $\\vec 0$ is an asymptotically stable equilibrium of the system.",
+  answer: false,
+  explanation: "Convergence of one trajectory does not imply asymptotic stability (which requires nearby trajectories to converge). For example, with $A=\\begin{bmatrix}-1&0\\\\0&1\\end{bmatrix}$, the trajectory from $\\vec e_1$ goes to $0$ but generic nearby trajectories do not.",
+  tags: ["Continuous Dynamical Systems"]
+},
+
+{
+  statement: "There exists a diagonalizable $4\\times4$ matrix $A$ with characteristic polynomial $\\lambda^2(\\lambda-1)(\\lambda-2)$ and rank $3$.",
+  answer: false,
+  explanation: "If $A$ is diagonalizable with characteristic polynomial $\\lambda^2(\\lambda-1)(\\lambda-2)$, then $0$ has algebraic (hence geometric) multiplicity $2$, so $\\dim\\ker(A)=2$. Rank–nullity gives $\\operatorname{rank}(A)=4-2=2$, not $3$.",
+  tags: ["Diagonalization", "Image, Kernel and Rank Nullity"]
+},
+
+{
+  statement: "Let $A$ be a $6\\times6$ matrix that has exactly one real eigenvalue $\\lambda_0$. Then the algebraic multiplicity of $\\lambda_0$ is at least $2$.",
+  answer: true,
+  explanation: "Non-real eigenvalues of a real matrix occur in complex conjugate pairs, contributing an even total algebraic multiplicity. Since $6$ is even and there is at least one real eigenvalue, the real eigenvalue(s) must account for an even algebraic multiplicity, so $\\lambda_0$ has multiplicity $\\ge 2$.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "All diagonal matrices are orthogonally diagonalizable.",
+  answer: true,
+  explanation: "A real diagonal matrix is symmetric. By the Spectral Theorem, every real symmetric matrix is orthogonally diagonalizable.",
+  tags: ["Symmetric Matrices and the Spectral Theorem"]
+},
+
+{
+  statement: "There exists an $n\\times n$ matrix $A$ satisfying $A^2-4A+3I_n=0$ and having the eigenvalue $2$.",
+  answer: false,
+  explanation: "If $A\\vec v=2\\vec v$ with $\\vec v\\neq 0$, then $(A^2-4A+3I)\\vec v=(2^2-4\\cdot2+3)\\vec v = (-1)\\vec v\\neq 0$, contradicting $A^2-4A+3I=0$.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If $A$ is invertible, then $A$ and $A^{-1}$ have the same characteristic polynomial.",
+  answer: false,
+  explanation: "For example, if $A=2I_2$, then the eigenvalues of $A$ are $2$ while the eigenvalues of $A^{-1}$ are $1/2$, so their characteristic polynomials differ.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "There is a $6\\times6$ matrix $A$ with 6 positive eigenvalues such that $\\operatorname{tr}(A)=0$.",
+  answer: false,
+  explanation: "The trace equals the sum of the eigenvalues (counted with algebraic multiplicity). If all six eigenvalues are positive, their sum is positive, so the trace cannot be 0.",
+  tags: ["Diagonalization"]
+},
+
+// Midterm 2 Practice 2
+
+{
+  statement: "If $A$ is invertible, then $A$ and $A^{-1}$ have the same eigenvectors.",
+  answer: true,
+  explanation: "If $A\\vec v=\\lambda\\vec v$ with $\\vec v\\neq 0$ and $A$ invertible, then $\\lambda\\neq 0$ and $A^{-1}\\vec v=\\frac{1}{\\lambda}\\vec v$. Conversely, if $A^{-1}\\vec v=\\mu\\vec v$, then $A\\vec v=\\frac{1}{\\mu}\\vec v$.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If $A$ is an $n \\times n$ matrix, then the geometric multiplicities of the eigenvalues of $A$ must add up to $n$.",
+  answer: false,
+  explanation: "The algebraic multiplicities must add up to $n$. The geometric multiplicities add up to $n$ only if $A$ has an eigenbasis (i.e., is diagonalizable).",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If $z=a+ib$ is a complex number with $a^2+b^2<1$, then $\\lim_{n\\to\\infty} z^n = 0$.",
+  answer: true,
+  explanation: "Write $z=re^{i\\theta}$ where $r=\\sqrt{a^2+b^2}<1$. Then $z^n=r^n e^{in\\theta}$ and $r^n\\to 0$ as $n\\to\\infty$, so $z^n\\to 0$.",
+  tags: ["Discrete Dynamical Systems"]
+},
+
+{
+  statement: "If $\\vec{0}$ is an asymptotically stable equilibrium of $\\frac{d\\vec{x}}{dt} = A\\vec{x}$, then $\\vec{0}$ cannot be an asymptotically stable equilibrium of $\\frac{d\\vec{x}}{dt} = -A\\vec{x}$.",
+  answer: true,
+  explanation: "Replacing $A$ by $-A$ reverses growth/decay rates (eigenvalues change sign). If trajectories near $0$ decay toward $0$ for $A$, then they grow away from $0$ for $-A$.",
+  tags: ["Continuous Dynamical Systems"]
+},
+
+{
+  statement: "For any $n \\times n$ matrix $A$, $\\det(A^T)=\\det(A)$.",
+  answer: true,
+  explanation: "Taking transpose does not change determinant: $\\det(A^T)=\\det(A)$.",
+  tags: ["Determinants"]
+},
+
+{
+  statement: "If the matrix $A$ represents rotation around a line through the origin in $\\mathbb{R}^3$, then $\\det(A-I_3)=0$.",
+  answer: true,
+  explanation: "A rotation about a line fixes every vector on that line, so $1$ is an eigenvalue of $A$. Hence $\\det(A-I_3)=0$.",
+  tags: ["Geometric Transformations"]
+},
+
+{
+  statement: "If $V$ is a subspace of $\\mathbb{R}^n$, then every vector in $\\mathbb{R}^n$ is either in $V$ or in $V^\\perp$.",
+  answer: false,
+  explanation: "For example, in $\\mathbb{R}^2$ let $V=\\operatorname{span}\\begin{bmatrix}1\\\\0\\end{bmatrix}$ and $V^\\perp=\\operatorname{span}\\begin{bmatrix}0\\\\1\\end{bmatrix}$. The vector $\\begin{bmatrix}1\\\\1\\end{bmatrix}$ is in neither.",
+  tags: ["Orthogonal Matrices"]
+},
+
+{
+  statement: "If $A$ is any non-invertible $6\\times 6$ matrix, then $\\det(-A)=-\\det(A)$.",
+  answer: true,
+  explanation: "If $A$ is non-invertible then $\\det(A)=0$. Also $\\det(-A)=(-1)^6\\det(A)=0$. So both sides are $0$.",
+  tags: ["Determinants"]
+},
+
+{
+  statement: "If a matrix $A$ has $\\operatorname{tr}(A)=0$, then $A$ is not invertible.",
+  answer: false,
+  explanation: "For example, $\\begin{bmatrix}1&0\\\\0&-1\\end{bmatrix}$ has trace $0$ but determinant $-1$, so it is invertible.",
+  tags: ["Determinants"]
+},
+
+{
+  statement: "Let $A$ be an $n\\times m$ matrix. Then $\\dim(\\ker(A^T))+\\dim(\\operatorname{im}(A))=n$.",
+  answer: true,
+  explanation: "$\\ker(A^T)=(\\operatorname{im}A)^\\perp$. For any subspace $W\\subseteq\\mathbb{R}^n$, $\\dim(W)+\\dim(W^\\perp)=n$. Apply this to $W=\\operatorname{im}A$.",
+  tags: ["Image, Kernel and Rank Nullity"]
+},
+
+{
+  statement: "Let $\\vec{v}_1$ and $\\vec{v}_2$ be eigenvectors of an $n\\times n$ matrix $A$ corresponding to distinct eigenvalues. Then $\\vec{v}_1$ and $\\vec{v}_2$ are orthogonal.",
+  answer: false,
+  explanation: "This is only guaranteed for symmetric (more generally, normal) matrices. For a general matrix, eigenvectors for different eigenvalues need not be orthogonal.",
+  tags: ["Symmetric Matrices and the Spectral Theorem"]
+},
+
+{
+  statement: "If $A$ and $B$ are $3\\times 3$ matrices, then $\\det(A+B)=\\det(A)+\\det(B)$.",
+  answer: false,
+  explanation: "Take $A=B=I_3$. Then $\\det(A+B)=\\det(2I_3)=8$, but $\\det(A)+\\det(B)=2$.",
+  tags: ["Determinants"]
+},
+
+{
+  statement: "The matrix $\\begin{bmatrix}3&0&1\\\\0&1&0\\\\0&0&3\\end{bmatrix}$ is diagonalizable.",
+  answer: false,
+  explanation: "The eigenvalues are $1$ (alg. mult. 1) and $3$ (alg. mult. 2). For $\\lambda=3$, $A-3I=\\begin{bmatrix}0&0&1\\\\0&-2&0\\\\0&0&0\\end{bmatrix}$ has a 1-dimensional kernel, so the geometric multiplicity of 3 is 1. Thus $A$ is not diagonalizable.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "Let $A$ and $B$ be two $n\\times n$ matrices. If $A$ and $B$ are diagonalizable, then $AB$ is diagonalizable.",
+  answer: false,
+  explanation: "Diagonalizability is not preserved under multiplication unless additional hypotheses hold (e.g., sharing an eigenbasis). There are diagonalizable matrices whose product is not diagonalizable.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If $A,B,C,$ and $D$ are $3\\times 3$ matrices and $ABCD$ is invertible, then each of $A,B,C,$ and $D$ is invertible.",
+  answer: true,
+  explanation: "$\\det(ABCD)=\\det(A)\\det(B)\\det(C)\\det(D)\\neq 0$. Therefore each factor has nonzero determinant and is invertible.",
+  tags: ["Matrix Inverses"]
+},
+
+{
+  statement: "If $\\vec{v}$ is an eigenvector of $A$ with eigenvalue $2$, then $\\vec{v}$ is an eigenvector of $A^2-A$ with eigenvalue $2$.",
+  answer: true,
+  explanation: "If $A\\vec v=2\\vec v$, then $A^2\\vec v=4\\vec v$, so $(A^2-A)\\vec v=4\\vec v-2\\vec v=2\\vec v$.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "Let $A$ be a $2\\times 2$ matrix such that $\\operatorname{tr}(A)=0$ and $\\det(A)\\le 0$. Then all eigenvalues of $A$ are real.",
+  answer: true,
+  explanation: "The characteristic polynomial is $\\lambda^2-(\\operatorname{tr}A)\\lambda+\\det(A)=\\lambda^2+\\det(A)$. Its roots are $\\pm\\sqrt{-\\det(A)}$, which are real when $\\det(A)\\le 0$.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If $V$ is a subspace of $\\mathbb{R}^6$ and $\\vec{x}$ is a vector in $\\mathbb{R}^6$, then $(\\operatorname{proj}_V \\vec{x})\\cdot(\\vec{x}-\\operatorname{proj}_V \\vec{x})=0$.",
+  answer: true,
+  explanation: "$\\operatorname{proj}_V\\vec x$ lies in $V$ and $\\vec x-\\operatorname{proj}_V\\vec x$ lies in $V^\\perp$, so they are orthogonal.",
+  tags: ["Orthogonal Matrices"]
+},
+
+{
+  statement: "If $A$ is the matrix representing rotation in $\\mathbb{R}^2$ by $20^\\circ$ counterclockwise, then $A$ is diagonalizable over $\\mathbb{C}$ but not over $\\mathbb{R}$.",
+  answer: true,
+  explanation: "A nontrivial rotation in $\\mathbb{R}^2$ has no real eigenvectors, so it is not diagonalizable over $\\mathbb{R}$. Over $\\mathbb{C}$ it has two distinct complex eigenvalues (a conjugate pair), so it is diagonalizable over $\\mathbb{C}$.",
+  tags: ["Diagonalization"]
+},
+
+// Midterm 2 Practice 3
+
+{
+  statement: "Let $A$ be an invertible $n\\times n$ matrix. Then $A^T A$ is invertible.",
+  answer: true,
+  explanation: "If $A$ is invertible then $A^T$ is invertible (with inverse $(A^{-1})^T$). Hence $A^TA$ is a product of invertible matrices, so it is invertible.",
+  tags: ["Matrix Inverses"]
+},
+
+{
+  statement: "If $S^{-1}AS$ is a diagonal matrix, then the columns of $S$ must be eigenvectors of $A$.",
+  answer: true,
+  explanation: "If $S^{-1}AS=D$ is diagonal, then $AS=SD$. Writing the $k$th column of $S$ as $S\\vec e_k$, we get $A(S\\vec e_k)=SD\\vec e_k=\\lambda_k(S\\vec e_k)$, so the $k$th column is an eigenvector with eigenvalue $\\lambda_k$.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If the eigenvalues of a $3\\times 3$ matrix $A$ are $1$ and $2$, then $A$ is diagonalizable.",
+  answer: false,
+  explanation: "Having only eigenvalues $1$ and $2$ guarantees at most two eigenspaces, and $A$ could fail to have 3 linearly independent eigenvectors. For example, $\\begin{bmatrix}1&1&0\\\\0&1&0\\\\0&0&2\\end{bmatrix}$ is not diagonalizable.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If $A$ is any square matrix, then $\\det(-A)=-\\det(A)$.",
+  answer: false,
+  explanation: "For $n\\times n$ matrices, $\\det(-A)=(-1)^n\\det(A)$. For example, if $A=I_2$, then $\\det(-A)=\\det(-I_2)=1\\neq -1=-\\det(I_2)$.",
+  tags: ["Determinants"]
+},
+
+{
+  statement: "For all subspaces $V$ of $\\mathbb{R}^n$, $\\dim(V)+\\dim(V^\\perp)=n$.",
+  answer: true,
+  explanation: "This is a standard fact about orthogonal complements in $\\mathbb{R}^n$: every subspace satisfies $\\dim(V)+\\dim(V^\\perp)=n$.",
+  tags: ["Orthogonal Matrices"]
+},
+
+{
+  statement: "The product of two symmetric $3\\times 3$ matrices is another symmetric $3\\times 3$ matrix.",
+  answer: false,
+  explanation: "If $A$ and $B$ are symmetric, then $(AB)^T=B^TA^T=BA$, which need not equal $AB$. There are symmetric matrices with $AB\\ne BA$, making $AB$ non-symmetric.",
+  tags: ["Symmetric Matrices and the Spectral Theorem"]
+},
+
+{
+  statement: "There is a line $L$ through the origin in $\\mathbb{R}^2$ such that the matrix of $\\operatorname{proj}_L$ has determinant $1$.",
+  answer: false,
+  explanation: "Projection onto a proper subspace is not invertible, so its determinant must be $0$ (in $\\mathbb{R}^2$, it has eigenvalues $1$ and $0$).",
+  tags: ["Geometric Transformations"]
+},
+
+{
+  statement: "If a $4\\times 4$ matrix $A$ has rank $2$ and characteristic polynomial $\\lambda^2(\\lambda-1)(\\lambda-2)$, then there must be an eigenbasis for $A$.",
+  answer: true,
+  explanation: "The eigenvalues are $1$ and $2$ (each algebraic multiplicity 1) and $0$ (algebraic multiplicity 2). Rank 2 implies nullity 2, so $\\dim\\ker(A)=2$, meaning the geometric multiplicity of eigenvalue 0 is 2. The geometric multiplicities add to $1+1+2=4$, so $A$ has an eigenbasis.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "Let $A$ be a diagonalizable $n\\times n$ matrix. Then, for each eigenvalue $\\lambda$ of $A$, $\\operatorname{rank}(A-\\lambda I_n)$ equals the geometric multiplicity of $\\lambda$.",
+  answer: false,
+  explanation: "Geometric multiplicity of $\\lambda$ is $\\dim\\ker(A-\\lambda I_n)$, not $\\operatorname{rank}(A-\\lambda I_n)$. In fact, rank + nullity = $n$. For example, if $A=I_2$ and $\\lambda=1$, then $A-\\lambda I=0$ has rank 0 but geometric multiplicity 2.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If $A$ is a $3\\times 3$ matrix with characteristic polynomial $-\\lambda^3-4\\lambda^2+\\lambda+4$, then $A$ is invertible.",
+  answer: true,
+  explanation: "Plugging $\\lambda=0$ into $\\det(A-\\lambda I)$ gives $\\det(A)=4\\ne 0$, so $A$ is invertible.",
+  tags: ["Matrix Inverses"]
+},
+
+{
+  statement: "If $A$ is an $n\\times n$ matrix for which $\\det(2A)=4\\det(A)$, then $n=2$.",
+  answer: false,
+  explanation: "Always $\\det(2A)=2^n\\det(A)$. The equality $2^n\\det(A)=4\\det(A)$ does not force $n=2$ if $\\det(A)=0$. For example, $A=0$ works for any $n$.",
+  tags: ["Determinants"]
+},
+
+{
+  statement: "There exists a $5\\times 5$ matrix $A$ with $\\operatorname{rank}(A)=3$ that has five distinct eigenvalues.",
+  answer: false,
+  explanation: "Rank 3 implies nullity 2, so $\\dim\\ker(A)=2$, meaning eigenvalue 0 has geometric multiplicity at least 2, hence algebraic multiplicity at least 2. Therefore at most 3 eigenvalues can be nonzero, so $A$ cannot have 5 distinct eigenvalues.",
+  tags: ["Image, Kernel and Rank Nullity"]
+},
+
+{
+  statement: "Every upper triangular matrix is diagonalizable.",
+  answer: false,
+  explanation: "A standard counterexample is the shear matrix $\\begin{bmatrix}1&1\\\\0&1\\end{bmatrix}$ (or embedded block-diagonally), which is upper triangular but not diagonalizable.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If $S=\\begin{bmatrix}2&3&6\\\\3&-6&2\\\\6&2&-3\\end{bmatrix}$, then $S^{-1}=S^T$.",
+  answer: false,
+  explanation: "$S^{-1}=S^T$ holds exactly for orthogonal matrices, i.e., those with orthonormal columns. This matrix does not have orthonormal columns (equivalently $S^TS\\ne I$), so it is not orthogonal.",
+  tags: ["Orthogonal Matrices"]
+},
+
+{
+  statement: "For any $n\\times n$ matrix $A$, $\\operatorname{rref}(A^T)=\\operatorname{rref}(A)$.",
+  answer: false,
+  explanation: "Row-reducing $A$ and $A^T$ need not give the same rref. For example, $A=\\begin{bmatrix}0&1\\\\0&0\\end{bmatrix}$ has $\\operatorname{rref}(A)=\\begin{bmatrix}0&1\\\\0&0\\end{bmatrix}$, while $A^T=\\begin{bmatrix}0&0\\\\1&0\\end{bmatrix}$ has $\\operatorname{rref}(A^T)=\\begin{bmatrix}1&0\\\\0&0\\end{bmatrix}$.",
+  tags: ["Linear Systems"]
+},
+
+{
+  statement: "$3+6i$ and $1-2i$ are eigenvalues of $\\begin{bmatrix}3&4&-4\\\\-4&3&2\\\\4&-2&3\\end{bmatrix}$.",
+  answer: false,
+  explanation: "For a real matrix, non-real eigenvalues come in complex conjugate pairs. If $3+6i$ and $1-2i$ were eigenvalues, then $3-6i$ and $1+2i$ would also be eigenvalues, giving at least 4 eigenvalues, impossible for a $3\\times 3$ matrix.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "The matrix $\\begin{bmatrix}1&1&1&1&1\\\\0&2&2&2&2\\\\0&0&3&3&3\\\\0&0&0&4&4\\\\0&0&0&0&5\\end{bmatrix}$ is diagonalizable.",
+  answer: true,
+  explanation: "It is upper triangular, so its eigenvalues are the diagonal entries $1,2,3,4,5$. Since these are 5 distinct eigenvalues, the matrix is diagonalizable.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If a $3\\times 3$ matrix $A$ has only two distinct eigenvalues, then $A$ cannot be diagonalizable.",
+  answer: false,
+  explanation: "For example, $\\begin{bmatrix}1&0&0\\\\0&2&0\\\\0&0&2\\end{bmatrix}$ has only two distinct eigenvalues but is diagonal (hence diagonalizable).",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If $A$ is an $n\\times n$ matrix and $A-I_n$ is diagonalizable, then $A$ is diagonalizable.",
+  answer: true,
+  explanation: "If $A-I_n = S D S^{-1}$, then $A = S(D+I_n)S^{-1}$, and $D+I_n$ is diagonal. Hence $A$ is diagonalizable.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If $A$ and $B$ share an eigenbasis, then $AB=BA$.",
+  answer: true,
+  explanation: "If $A=S D_1 S^{-1}$ and $B=S D_2 S^{-1}$ with the same $S$, then $AB=S(D_1D_2)S^{-1}$ and $BA=S(D_2D_1)S^{-1}$. Since diagonal matrices commute, $D_1D_2=D_2D_1$, so $AB=BA$.",
+  tags: ["Diagonalization"]
+},
+
+// Midterm 2 Practice 4
+
+{
+  statement: "If $A$ is a symmetric matrix with $A^5 = 0$, then $A = 0$.",
+  answer: true,
+  explanation: "By the Spectral Theorem, $A$ is diagonalizable with real eigenvalues. If $A^5=0$, then every eigenvalue $\\lambda$ satisfies $\\lambda^5=0$, so $\\lambda=0$. Hence all eigenvalues are 0 and $A=0$.",
+  tags: ["Symmetric Matrices and the Spectral Theorem"]
+},
+
+{
+  statement: "If $A$ is a matrix with $A^5 = 0$, then $A = 0$.",
+  answer: false,
+  explanation: "A counterexample is $A=\\begin{bmatrix}0&1\\\\0&0\\end{bmatrix}$, which is nonzero but satisfies $A^2=0$ (hence $A^5=0$).",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "The set of $2 \\times 2$ matrices that have $\\begin{bmatrix}1\\\\3\\end{bmatrix}$ as an eigenvector is a linear space.",
+  answer: true,
+  explanation: "If $A\\vec v=\\lambda\\vec v$ and $B\\vec v=\\mu\\vec v$, then $(A+B)\\vec v=(\\lambda+\\mu)\\vec v$, and for any scalar $k$, $(kA)\\vec v=(k\\lambda)\\vec v$. So the set is closed under addition and scalar multiplication.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "The polynomials $f_1(x)=x^2+3$, $f_2(x)=2x^2-7$, and $f_3(x)=-3x^2+5$ in $P_2$ are linearly independent.",
+  answer: false,
+  explanation: "All three lie in $\\operatorname{span}(x^2,1)$, which is 2-dimensional, so they cannot be linearly independent.",
+  tags: ["Linear Combinations"]
+},
+
+{
+  statement: "If $T:P_2\\to\\mathbb{R}^3$ is linear with $T(1)=\\begin{bmatrix}1\\\\0\\\\0\\end{bmatrix}$ and $T(x)=\\begin{bmatrix}0\\\\1\\\\0\\end{bmatrix}$, then $T(x^2)$ must equal $\\begin{bmatrix}0\\\\0\\\\1\\end{bmatrix}$.",
+  answer: false,
+  explanation: "Knowing $T$ on $1$ and $x$ does not determine $T(x^2)$. For example, define $T(ax^2+bx+c)=\\begin{bmatrix}c\\\\b\\\\0\\end{bmatrix}$; then $T(1)$ and $T(x)$ match, but $T(x^2)=\\vec 0$.",
+  tags: ["Linear Transformations"]
+},
+
+{
+  statement: "If $(\\vec v_1,\\vec v_2,\\vec v_3)$ is a basis of $\\mathbb{R}^3$ and Gram-Schmidt produces an orthonormal basis $\\mathfrak{B}=(\\vec u_1,\\vec u_2,\\vec u_3)$, then all entries of $[\\vec v_1]_{\\mathfrak{B}}$ are non-negative.",
+  answer: true,
+  explanation: "Gram-Schmidt sets $\\vec u_1=\\frac{\\vec v_1}{\\|\\vec v_1\\|}$, so $\\vec v_1=\\|\\vec v_1\\|\\vec u_1$, hence $[\\vec v_1]_{\\mathfrak{B}}=\\begin{bmatrix}\\|\\vec v_1\\|\\\\0\\\\0\\end{bmatrix}$ which is entrywise non-negative.",
+  tags: ["Orthogonal Matrices"]
+},
+
+{
+  statement: "If $T:C^{\\infty}\\to\\mathbb{R}$ is the linear transformation defined by $T(f)=f(0)$, then $\\ker(T)$ is finite-dimensional.",
+  answer: false,
+  explanation: "$\\ker(T)$ is the set of smooth functions with $f(0)=0$, which is infinite-dimensional.",
+  tags: ["Image, Kernel and Rank Nullity"]
+},
+
+{
+  statement: "If $A$ represents reflection over a subspace $V\\subseteq\\mathbb{R}^n$, then $\\det(A)=-1$.",
+  answer: false,
+  explanation: "A reflection has eigenvalue $1$ on $V$ and $-1$ on $V^\\perp$, so $\\det(A)=(-1)^{n-\\dim V}$, which can be $1$ or $-1$ depending on parity.",
+  tags: ["Geometric Transformations"]
+},
+
+{
+  statement: "If $A$ is a $2\\times 2$ matrix with $A^2=0$, then $e^A=I_2+A$.",
+  answer: true,
+  explanation: "Using $e^A=I+A+\\frac{A^2}{2!}+\\frac{A^3}{3!}+\\cdots$ and $A^2=0$ forces all higher powers to be 0, so $e^A=I+A$.",
+  tags: ["Continuous Dynamical Systems"]
+},
+
+{
+  statement: "There is a real symmetric matrix $A$ with characteristic polynomial $\\lambda^2-4\\lambda+6$.",
+  answer: false,
+  explanation: "A real symmetric matrix has only real eigenvalues, but $\\lambda^2-4\\lambda+6$ has negative discriminant, so it has no real roots.",
+  tags: ["Symmetric Matrices and the Spectral Theorem"]
+},
+
+// Midterm 2 Practice 5
+
+{
+  statement: "If $A$ is a symmetric $n \\times n$ matrix and $B$ is any $n \\times n$ matrix, then $BAB^T$ is symmetric.",
+  answer: true,
+  explanation: "$(BAB^T)^T = (B^T)^T A^T B^T = B A^T B^T = BAB^T$ since $A^T = A$.",
+  tags: ["Symmetric Matrices and the Spectral Theorem"]
+},
+
+{
+  statement: "If $\\lambda$ is an eigenvalue of two $n \\times n$ matrices $A$ and $B$, then it is also an eigenvalue of $A+B$.",
+  answer: false,
+  explanation: "For example, $\\lambda=1$ is an eigenvalue of $A=I_2$ and $B=I_2$, but $A+B=2I_2$ has eigenvalue $2$, not $1$.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If $\\vec v$ is an eigenvector of two $n \\times n$ matrices $A$ and $B$, then it is also an eigenvector of $A+B$.",
+  answer: true,
+  explanation: "If $A\\vec v=\\lambda\\vec v$ and $B\\vec v=\\mu\\vec v$, then $(A+B)\\vec v=(\\lambda+\\mu)\\vec v$.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If a matrix $A$ has two eigenvalues $\\lambda_1$ and $\\lambda_2$ whose eigenspaces satisfy $E_{\\lambda_1}=E_{\\lambda_2}^\\perp$, then $A$ is diagonalizable.",
+  answer: true,
+  explanation: "Since $E_{\\lambda_1}$ and $E_{\\lambda_2}$ are orthogonal complements, their dimensions add to $n$. Thus the geometric multiplicities add to $n$, so $A$ has an eigenbasis.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "$T:C^\\infty \\to C^\\infty$ defined by $T(f)=f''+4$ is a linear transformation.",
+  answer: false,
+  explanation: "Linearity requires $T(0)=0$, but $T(0)=4$, which is not the zero function.",
+  tags: ["Linear Transformations"]
+},
+
+{
+  statement: "If $A$ is an $n \\times n$ matrix, then $A^T$ has the same eigenvectors as $A$.",
+  answer: false,
+  explanation: "For example, $A=\\begin{bmatrix}1&1\\\\0&1\\end{bmatrix}$ has eigenvector $\\vec e_1$, but $A^T$ does not.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If $f_1,f_2,f_3 \\in P_5$ and $c_1f_1+c_2f_2+c_3f_3 = 2f_1-7f_2+5f_3$, then $c_2$ must equal $-7$.",
+  answer: false,
+  explanation: "If $f_1=f_2=f_3$, then many different triples $(c_1,c_2,c_3)$ satisfy the equation, so $c_2$ need not equal $-7$.",
+  tags: ["Linear Combinations"]
+},
+
+{
+  statement: "There are infinitely many values of $a$ for which $\\begin{bmatrix}a&a\\\\a&a\\end{bmatrix}$ is diagonalizable.",
+  answer: true,
+  explanation: "Its eigenvalues are $0$ and $2a$. For all $a$, the matrix is diagonalizable (it has two independent eigenvectors).",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If $A$ is a diagonalizable $5 \\times 5$ matrix such that $A^7=0$, then $A$ must be the zero matrix.",
+  answer: true,
+  explanation: "If $A=SDS^{-1}$, then $A^7=SD^7S^{-1}=0$ implies $D^7=0$. Thus all eigenvalues are 0 and $A=0$.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If $2f_1+5f_2-3f_3 = 7f_1+2f_2-4f_3$, then $f_1,f_2,f_3$ are linearly dependent.",
+  answer: true,
+  explanation: "Rearranging gives $-5f_1+3f_2+f_3=0$, a nontrivial linear relation.",
+  tags: ["Linear Combinations"]
+},
+
+{
+  statement: "If $\\det(A) \\ne 0$, then $\\det(\\operatorname{rref}(A)) \\ne 0$.",
+  answer: true,
+  explanation: "If $\\det(A)\\ne 0$, then $A$ is invertible, so $\\operatorname{rref}(A)=I_n$ and $\\det(I_n)=1$.",
+  tags: ["Determinants"]
+},
+
+{
+  statement: "If Gram–Schmidt applied to $(\\vec v_1,\\vec v_2,\\vec v_3)$ and to $(\\vec v_1,\\vec v_3,\\vec v_2)$ produces $(\\vec u_1,\\vec u_2,\\vec u_3)$ and $(\\vec w_1,\\vec w_2,\\vec w_3)$, then $\\operatorname{span}(\\vec u_2,\\vec u_3)=\\operatorname{span}(\\vec w_2,\\vec w_3)$.",
+  answer: true,
+  explanation: "Both sets form orthonormal bases of the same space, and $\\vec u_1=\\vec w_1$. Thus both spans consist of vectors orthogonal to $\\vec v_1$ within the same subspace.",
+  tags: ["Orthogonal Matrices"]
+},
+
+{
+  statement: "If a $2\\times2$ matrix has eigenvalue $e^{i\\pi/50}$, then $A^{100}=I_2$.",
+  answer: true,
+  explanation: "Its eigenvalues are $e^{\\pm i\\pi/50}$. Raising to the 100th power gives $e^{\\pm 2\\pi i}=1$, so $A^{100}=I_2$.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If $A$ is an $8\\times6$ matrix with orthogonal columns, then $A^TA$ is diagonal.",
+  answer: true,
+  explanation: "$A^TA$ has entries $\\vec v_i\\cdot\\vec v_j$. Orthogonal columns make off-diagonal entries zero, so it is diagonal.",
+  tags: ["Orthogonal Matrices"]
+},
+
+{
+  statement: "If $\\begin{bmatrix}1\\\\0\\\\1\\end{bmatrix}$ and $\\begin{bmatrix}3\\\\2\\\\-2\\end{bmatrix}$ are eigenvectors of $A$, then $A$ cannot be symmetric.",
+  answer: false,
+  explanation: "They could correspond to the same eigenvalue (e.g., $A=I_3$), so $A$ can be symmetric.",
+  tags: ["Symmetric Matrices and the Spectral Theorem"]
+},
+
+{
+  statement: "If $A$ represents reflection over a plane in $\\mathbb{R}^3$, then $\\operatorname{tr}(A)=1$.",
+  answer: true,
+  explanation: "A reflection over a plane has eigenvalues $1,1,-1$, so the trace is $1+1-1=1$.",
+  tags: ["Geometric Transformations"]
+},
+
+{
+  statement: "If $A$ is orthogonally diagonalizable, then $A^TA=I$.",
+  answer: false,
+  explanation: "Orthogonal diagonalizability means $A=QDQ^T$, not that $A$ is orthogonal. For example, $\\begin{bmatrix}1&0\\\\0&2\\end{bmatrix}$ is orthogonally diagonalizable but not orthogonal.",
+  tags: ["Symmetric Matrices and the Spectral Theorem"]
+},
+
+{
+  statement: "A matrix whose entries are all nonzero must have a nonzero determinant.",
+  answer: false,
+  explanation: "For example, $\\begin{bmatrix}1&1\\\\1&1\\end{bmatrix}$ has determinant 0.",
+  tags: ["Determinants"]
+},
+
+{
+  statement: "If $\\vec v$ and $\\vec w$ are eigenvectors with eigenvalues $3$ and $-3$, then $\\vec v-\\vec w$ is an eigenvector.",
+  answer: false,
+  explanation: "In general $A(\\vec v-\\vec w)=3\\vec v+3\\vec w$, which is not a scalar multiple of $\\vec v-\\vec w$.",
+  tags: ["Diagonalization"]
 },
 
 // Quiz 1
@@ -1030,6 +1793,186 @@ window.QUESTION_BANK = [
   explanation: "The rank of a projection onto a line is 1. In $n$ dimensions, rank–nullity gives nullity $= n - 1$. Thus the nullity depends on the ambient dimension and is not always 1.",
   tags: ["Image, Kernel and Rank Nullity"]
 },
+
+// Quiz 5
+
+{
+  statement: "There is a subspace $V$ of $\\mathbb{R}^4$ such that $V = V^\\perp$.",
+  answer: false,
+  explanation: "If a vector lies in both $V$ and $V^\\perp$, then it must be perpendicular to itself. The only vector perpendicular to itself is $\\vec{0}$. Thus $V \\cap V^\\perp = \\{\\vec{0}\\}$, so $V$ cannot equal $V^\\perp$ unless $V = \\{\\vec{0}\\}$, but then $V^\\perp = \\mathbb{R}^4$.",
+  tags: ["Orthogonal Matrices"]
+},
+
+{
+  statement: "If $(\\vec{u}_1, \\vec{u}_2, \\vec{u}_3)$ and $(\\vec{v}_1, \\vec{v}_2, \\vec{v}_3)$ are two orthonormal bases for $\\mathbb{R}^3$, then $\\vec{u}_i \\cdot \\vec{v}_j = 0$ for all $i,j=1,2,3$.",
+  answer: false,
+  explanation: "Two orthonormal bases need not be orthogonal to each other. For example, if $(\\vec{u}_1,\\vec{u}_2,\\vec{u}_3)=(\\vec{e}_1,\\vec{e}_2,\\vec{e}_3)$ and $(\\vec{v}_1,\\vec{v}_2,\\vec{v}_3)=(\\vec{e}_3,\\vec{e}_2,\\vec{e}_1)$, then $\\vec{u}_1\\cdot\\vec{v}_3=1$.",
+  tags: ["Orthogonal Matrices"]
+},
+
+{
+  statement: "Applying the Gram–Schmidt process to the vectors $\\left( \\begin{bmatrix} -1 \\\\ 3 \\end{bmatrix}, \\begin{bmatrix} 2 \\\\ -6 \\end{bmatrix} \\right)$ will give an orthonormal basis of $\\mathbb{R}^2$.",
+  answer: false,
+  explanation: "The vectors are linearly dependent since $\\begin{bmatrix} 2 \\\\ -6 \\end{bmatrix} = -2 \\begin{bmatrix} -1 \\\\ 3 \\end{bmatrix}$. In Gram–Schmidt, the second step produces the zero vector, so we do not obtain a basis of $\\mathbb{R}^2$.",
+  tags: ["Orthogonal Matrices"]
+},
+
+{
+  statement: "For any matrix $A$, $(\\ker A)^\\perp = \\operatorname{im}(A^T)$.",
+  answer: true,
+  explanation: "We know that $(\\operatorname{im} B)^\\perp = \\ker(B^T)$ for any matrix $B$. Taking $B=A^T$ gives $(\\operatorname{im} A^T)^\\perp = \\ker A$. Taking orthogonal complements of both sides yields $(\\ker A)^\\perp = \\operatorname{im}(A^T)$.",
+  tags: ["Image, Kernel and Rank Nullity"]
+},
+
+{
+  statement: "$\\det(4A) = 4\\det(A)$ for all $4 \\times 4$ matrices $A$.",
+  answer: false,
+  explanation: "For an $n \\times n$ matrix, $\\det(cA) = c^n \\det(A)$. When $n=4$, $\\det(4A)=4^4\\det(A)=256\\det(A)$, not $4\\det(A)$. For example, if $A=I_4$, then $\\det(4I_4)=256$.",
+  tags: ["Determinants"]
+},
+
+// Quiz 6
+{
+  statement: "If $\\vec{b} \\in \\operatorname{im} A$, then the least squares solutions of $A \\vec{x} = \\vec{b}$ are exactly the solutions of $A \\vec{x} = \\vec{b}$.",
+  answer: true,
+  explanation: "Least squares solutions minimize $\\|A\\vec{x} - \\vec{b}\\|$. If $\\vec{b} \\in \\operatorname{im} A$, then there exists $\\vec{x}$ such that $A\\vec{x} = \\vec{b}$, making the error zero. Thus the least squares solutions are precisely the actual solutions of the system.",
+  tags: ["Least Squares"]
+},
+
+{
+  statement: "If $\\vec{x}^*$ is the least squares solution to $A\\vec{x}=\\vec{b}$, then $\\vec{b}-A\\vec{x}^*$ \\in (\\operatorname{im} A)^\\perp$.",
+  answer: true,
+  explanation: "The least squares solution satisfies the normal equations $A^T(A\\vec{x}^* - \\vec{b}) = 0$, which implies $A^T(\\vec{b}-A\\vec{x}^*)=0$. Thus $\\vec{b}-A\\vec{x}^*$ is orthogonal to every column of $A$, meaning it lies in $(\\operatorname{im} A)^\\perp$.",
+  tags: ["Least Squares"]
+},
+
+{
+  statement: "Any vector $\\vec v$ that satisfies $A\\vec{v}=\\lambda \\vec{v}$ for some $\\lambda$ is an eigenvector for $A$.",
+  answer: false,
+  explanation: "Eigenvectors must be nonzero. The zero vector satisfies $A\\vec{0}=\\lambda \\vec{0}$ for every $\\lambda$, but it is not an eigenvector.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If $A$ is an $n \\times n$ matrix and $\\vec{v}$ is an eigenvector of $A$, then $\\vec{v}$ is also an eigenvector of $A + 3 I_n$.",
+  answer: true,
+  explanation: "If $A\\vec{v}=\\lambda\\vec{v}$, then $(A+3I_n)\\vec{v}=A\\vec{v}+3\\vec{v}=(\\lambda+3)\\vec{v}$. Thus $\\vec{v}$ remains an eigenvector, with eigenvalue $\\lambda+3$.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If $\\vec x(t+1) = A \\vec x(t)$, then $\\vec x(t) = tA \\vec x(0)$.",
+  answer: false,
+  explanation: "The recurrence applies the matrix repeatedly. Starting from $\\vec x(0)$, we obtain $\\vec x(t)=A^t \\vec x(0)$, not $tA\\vec x(0)$.",
+  tags: ["Discrete Dynamical Systems"]
+},
+// Quiz 7
+
+{
+  statement: "If $A$ is a diagonalizable $n \\times n$ matrix, then $A + 3 I_n$ is diagonalizable as well.",
+  answer: true,
+  explanation: "If $A = S D S^{-1}$ with $D$ diagonal, then $A + 3I_n = S(D+3I_n)S^{-1}$, and $D+3I_n$ is diagonal. Equivalently, an eigenbasis for $A$ is also an eigenbasis for $A+3I_n$.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If $\\begin{bmatrix}1\\\\4\\end{bmatrix}$ and $\\begin{bmatrix}2\\\\3\\end{bmatrix}$ are eigenvectors of $A$, then $A$ is diagonalizable over $\\mathbb{R}$.",
+  answer: true,
+  explanation: "These two vectors are linearly independent in $\\mathbb{R}^2$, so they form an eigenbasis for $A$. Therefore $A$ is diagonalizable over $\\mathbb{R}$.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "Every invertible matrix is diagonalizable.",
+  answer: false,
+  explanation: "For example, $\\begin{bmatrix}1 & 1\\\\ 0 & 1\\end{bmatrix}$ is invertible but has only one eigenvector, so it is not diagonalizable.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "Every diagonalizable matrix is invertible.",
+  answer: false,
+  explanation: "The zero matrix is diagonalizable (it is already diagonal) but not invertible.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If $A$ is diagonalizable over $\\mathbb{R}$, then $A^{100}$ is also diagonalizable over $\\mathbb{R}$.",
+  answer: true,
+  explanation: "If $A = S D S^{-1}$, then $A^{100} = S D^{100} S^{-1}$. Since $D^{100}$ is diagonal, $A^{100}$ is diagonalizable.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If $A^{100}$ is diagonalizable over $\\mathbb{R}$, then $A$ is also diagonalizable over $\\mathbb{R}$.",
+  answer: false,
+  explanation: "A rotation matrix by $2\\pi/100$ in $\\mathbb{R}^2$ is not diagonalizable over $\\mathbb{R}$, but its 100th power is the identity, which is diagonalizable.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If $A$ and $B$ are diagonalizable $n \\times n$ matrices, then $A + B$ is also diagonalizable.",
+  answer: false,
+  explanation: "For example, $A = \\begin{bmatrix}0 & 1\\\\ 0 & 1\\end{bmatrix}$ and $B = \\begin{bmatrix}1 & 0\\\\ 0 & 0\\end{bmatrix}$ are diagonalizable, but their sum $\\begin{bmatrix}1 & 1\\\\ 0 & 1\\end{bmatrix}$ is not.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If $A$ and $B$ share an eigenbasis, then $AB$ is diagonalizable.",
+  answer: true,
+  explanation: "If $A = S D_1 S^{-1}$ and $B = S D_2 S^{-1}$ for the same invertible matrix $S$, then $AB = S(D_1D_2)S^{-1}$. Since $D_1D_2$ is diagonal, $AB$ is diagonalizable.",
+  tags: ["Diagonalization"]
+},
+
+// Quiz 8
+
+{
+  statement: "If $2 + 3i$ is an eigenvalue of a $2 \\times 2$ matrix $A$, then $A$ is diagonalizable.",
+  answer: true,
+  explanation: "For a real $2 \\times 2$ matrix, non-real eigenvalues occur in conjugate pairs. Thus $2-3i$ is also an eigenvalue. Since the eigenvalues are distinct, $A$ is diagonalizable over $\\mathbb{C}$.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If $2 + 3i$ is an eigenvalue of a $3 \\times 3$ matrix $A$, then $A$ is diagonalizable.",
+  answer: true,
+  explanation: "Non-real eigenvalues occur in conjugate pairs, so $2-3i$ is also an eigenvalue. The third eigenvalue must be real. Thus $A$ has three distinct eigenvalues and is diagonalizable over $\\mathbb{C}$.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If $A$ is invertible, then $(A^T)^{-1} = (A^{-1})^T$.",
+  answer: true,
+  explanation: "We check that $A^T (A^{-1})^T = (A^{-1}A)^T = I^T = I$ and $(A^{-1})^T A^T = (AA^{-1})^T = I^T = I$. Therefore $(A^{-1})^T$ is the inverse of $A^T$.",
+  tags: ["Matrix Inverses"]
+},
+
+{
+  statement: "If $A$ is diagonalizable, then $A^T$ is diagonalizable.",
+  answer: true,
+  explanation: "If $A = S D S^{-1}$ with $D$ diagonal, then taking transposes gives $A^T = (S^{-1})^T D S^T$. Since $D^T = D$, this expresses $A^T$ as a similarity transformation of a diagonal matrix, so $A^T$ is diagonalizable.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If $A$ is a diagonalizable matrix and $\\lambda$ is an eigenvalue of $A$, then the algebraic multiplicity of $\\lambda$ equals its geometric multiplicity.",
+  answer: true,
+  explanation: "For any matrix, geometric multiplicity is at most algebraic multiplicity. If $A$ is diagonalizable, the geometric multiplicities sum to $n$, forcing each eigenvalue’s geometric multiplicity to equal its algebraic multiplicity.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If $L$ is the line $\\operatorname{span}\\begin{bmatrix}1\\\\2\\\\3\\end{bmatrix}$, then the matrix of $\\operatorname{proj}_L$ must be symmetric.",
+  answer: true,
+  explanation: "Orthogonal projection onto a subspace has an orthonormal eigenbasis (one eigenvalue 1 direction and the rest eigenvalue 0). Therefore it is orthogonally diagonalizable. By the Spectral Theorem, it must be symmetric.",
+  tags: ["Symmetric Matrices and the Spectral Theorem"]
+},
+
+// Quiz 9 has no True/False
+
+// Quiz 10
+
+// Quiz 11
 
 // Added additional
 {
