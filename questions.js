@@ -1445,21 +1445,21 @@ window.QUESTION_BANK = [
   statement: "The set of $2 \\times 2$ matrices that have $\\begin{bmatrix}1\\\\3\\end{bmatrix}$ as an eigenvector is a linear space.",
   answer: true,
   explanation: "If $A\\vec v=\\lambda\\vec v$ and $B\\vec v=\\mu\\vec v$, then $(A+B)\\vec v=(\\lambda+\\mu)\\vec v$, and for any scalar $k$, $(kA)\\vec v=(k\\lambda)\\vec v$. So the set is closed under addition and scalar multiplication.",
-  tags: ["Diagonalization"]
+  tags: ["Linear Spaces"]
 },
 
 {
   statement: "The polynomials $f_1(x)=x^2+3$, $f_2(x)=2x^2-7$, and $f_3(x)=-3x^2+5$ in $P_2$ are linearly independent.",
   answer: false,
   explanation: "All three lie in $\\operatorname{span}(x^2,1)$, which is 2-dimensional, so they cannot be linearly independent.",
-  tags: ["Linear Combinations"]
+  tags: ["Linear Spaces"]
 },
 
 {
   statement: "If $T:P_2\\to\\mathbb{R}^3$ is linear with $T(1)=\\begin{bmatrix}1\\\\0\\\\0\\end{bmatrix}$ and $T(x)=\\begin{bmatrix}0\\\\1\\\\0\\end{bmatrix}$, then $T(x^2)$ must equal $\\begin{bmatrix}0\\\\0\\\\1\\end{bmatrix}$.",
   answer: false,
   explanation: "Knowing $T$ on $1$ and $x$ does not determine $T(x^2)$. For example, define $T(ax^2+bx+c)=\\begin{bmatrix}c\\\\b\\\\0\\end{bmatrix}$; then $T(1)$ and $T(x)$ match, but $T(x^2)=\\vec 0$.",
-  tags: ["Linear Transformations"]
+  tags: ["Linear Spaces"]
 },
 
 {
@@ -1473,7 +1473,7 @@ window.QUESTION_BANK = [
   statement: "If $T:C^{\\infty}\\to\\mathbb{R}$ is the linear transformation defined by $T(f)=f(0)$, then $\\ker(T)$ is finite-dimensional.",
   answer: false,
   explanation: "$\\ker(T)$ is the set of smooth functions with $f(0)=0$, which is infinite-dimensional.",
-  tags: ["Image, Kernel and Rank Nullity"]
+  tags: ["Linear Spaces"]
 },
 
 {
@@ -1531,7 +1531,7 @@ window.QUESTION_BANK = [
   statement: "$T:C^\\infty \\to C^\\infty$ defined by $T(f)=f''+4$ is a linear transformation.",
   answer: false,
   explanation: "Linearity requires $T(0)=0$, but $T(0)=4$, which is not the zero function.",
-  tags: ["Linear Transformations"]
+  tags: ["Linear Spaces"]
 },
 
 {
@@ -1545,7 +1545,7 @@ window.QUESTION_BANK = [
   statement: "If $f_1,f_2,f_3 \\in P_5$ and $c_1f_1+c_2f_2+c_3f_3 = 2f_1-7f_2+5f_3$, then $c_2$ must equal $-7$.",
   answer: false,
   explanation: "If $f_1=f_2=f_3$, then many different triples $(c_1,c_2,c_3)$ satisfy the equation, so $c_2$ need not equal $-7$.",
-  tags: ["Linear Combinations"]
+  tags: ["Linear Spaces"]
 },
 
 {
@@ -1566,7 +1566,7 @@ window.QUESTION_BANK = [
   statement: "If $2f_1+5f_2-3f_3 = 7f_1+2f_2-4f_3$, then $f_1,f_2,f_3$ are linearly dependent.",
   answer: true,
   explanation: "Rearranging gives $-5f_1+3f_2+f_3=0$, a nontrivial linear relation.",
-  tags: ["Linear Combinations"]
+  tags: ["Linear Spaces"]
 },
 
 {
@@ -1992,7 +1992,7 @@ window.QUESTION_BANK = [
 {
   statement: "For any matrix $A$, if $A\\vec x = A\\vec y$, then $\\vec x = \\vec y$.",
   answer: false,
-  explanation: "This is only true if $A$ is invertible. A counterexample is a $2\\times2$ matrix of zeros, $\\vec{x}=\\vec{e}_1$ and $\\vec{y}=\\vec{e}_2$. Then $A\\vec{x}=A\\vec{y}$ bu $\\vec{x}\\neq\\vec{y}.",
+  explanation: "This is only true if $A$ is invertible. A counterexample is a $2\\times2$ matrix of zeros, $\\vec{x}=\\vec{e}_1$ and $\\vec{y}=\\vec{e}_2$. Then $A\\vec{x}=A\\vec{y}$ but $\\vec{x}\\neq\\vec{y}$.",
   tags: ["Matrix Inverses"]
 },
 
