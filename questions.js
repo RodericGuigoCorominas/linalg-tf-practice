@@ -109,7 +109,7 @@ window.QUESTION_BANK = [
 },
 
 {
-  statement: "If $\\text{rref}\\begin{bmatrix} A & | & \\vec{b} \\end{bmatrix} = \\begin{bmatrix} 1 & 2 & 3 & 0 & \\mid & 4\\\\ 0 & 0 & 0 & 1 & \\mid & 0 \\end{bmatrix}$, then the linear system $A\\vec{x} = \\vec{b}$ is inconsistent.",
+  statement: "If $\\operatorname{rref}\\begin{bmatrix} A & | & \\vec{b} \\end{bmatrix} = \\begin{bmatrix} 1 & 2 & 3 & 0 & \\mid & 4\\\\ 0 & 0 & 0 & 1 & \\mid & 0 \\end{bmatrix}$, then the linear system $A\\vec{x} = \\vec{b}$ is inconsistent.",
   answer: false,
   explanation: "The corresponding system is $x_1 + 2x_2 + 3x_3 = 4$ and $x_4 = 0$, which is consistent. An inconsistent system would have a row of the form $[0 \\; 0 \\; \\dots \\mid c]$ with $c \\neq 0$.",
   tags: ["Linear Systems"]
@@ -173,14 +173,14 @@ window.QUESTION_BANK = [
 },
 
 {
-  statement: "If $\\text{rref}(A)$ has a column of zeros, then $A\\vec{x}=\\vec{b}$ must have infinite solutions.",
+  statement: "If $\\operatorname{rref}(A)$ has a column of zeros, then $A\\vec{x}=\\vec{b}$ must have infinite solutions.",
   answer: false,
   explanation: "The system could be inconsistent and therefore have no solutions. For example, $\\begin{bmatrix} 1 & 0 & \\mid & 1\\\\ 0 & 0 & \\mid & 1 \\end{bmatrix}$ is inconsistent.",
   tags: ["Linear Systems"]
 },
 
 {
-  statement: "If $\\text{rref}(A)$ has a row of zeros, then $A\\vec{x}=\\vec{b}$ must have infinite solutions.",
+  statement: "If $\\operatorname{rref}(A)$ has a row of zeros, then $A\\vec{x}=\\vec{b}$ must have infinite solutions.",
   answer: false,
   explanation: "If $A$ has no free variables and $\\vec{b}=\\vec{0}$, the system can have a unique solution. For example, $\\begin{bmatrix} 1 & 0 & \\mid & 1\\\\ 0 & 1 & \\mid & 1\\\\ 0 & 0 & \\mid & 0 \\end{bmatrix}$ corresponds to a system with a unique solution.",
   tags: ["Linear Systems"]
@@ -725,9 +725,9 @@ window.QUESTION_BANK = [
 // Midterm 1 Practice 4
 
 {
-  statement: "If $\\text{rref}(A)$ has a row of zeros, then $A\\vec{x}=\\vec{b}$ cannot have a unique solution.",
+  statement: "If $\\operatorname{rref}(A)$ has a row of zeros, then $A\\vec{x}=\\vec{b}$ cannot have a unique solution.",
   answer: false,
-  explanation: "A zero row in $\\text{rref}(A)$ does not prevent a unique solution if the system is consistent and there are no free variables. For example, the augmented matrix $\\begin{bmatrix}1&0&\\mid&1\\\\0&1&\\mid&2\\\\0&0&\\mid&0\\end{bmatrix}$ has a unique solution even though $\\text{rref}(A)$ has a zero row.",
+  explanation: "A zero row in $\\operatorname{rref}(A)$ does not prevent a unique solution if the system is consistent and there are no free variables. For example, the augmented matrix $\\begin{bmatrix}1&0&\\mid&1\\\\0&1&\\mid&2\\\\0&0&\\mid&0\\end{bmatrix}$ has a unique solution even though $\\operatorname{rref}(A)$ has a zero row.",
   tags: ["Linear Systems"]
 },
 
@@ -739,9 +739,9 @@ window.QUESTION_BANK = [
 },
 
 {
-  statement: "If $A$ is a square matrix and $A\\vec{x}=\\vec{b}$ has infinitely many solutions, then $\\text{rref}(A)$ must have a row of zeros.",
+  statement: "If $A$ is a square matrix and $A\\vec{x}=\\vec{b}$ has infinitely many solutions, then $\\operatorname{rref}(A)$ must have a row of zeros.",
   answer: true,
-  explanation: "Infinitely many solutions implies at least one free variable, so $\\text{rank}(A) \\le n$ (number of columns). In rref this means there are fewer pivots than rows of $A$ can have, forcing at least one zero row in $\\text{rref}(A)$.",
+  explanation: "Infinitely many solutions implies at least one free variable, so $\\text{rank}(A) \\le n$ (number of columns). In rref this means there are fewer pivots than rows of $A$ can have, forcing at least one zero row in $\\operatorname{rref}(A)$.",
   tags: ["Linear Systems"]
 },
 
@@ -753,7 +753,7 @@ window.QUESTION_BANK = [
 },
 
 {
-  statement: "If $A\\vec{x}=\\vec{b}$ is consistent and $\\text{rref}(A)=\\begin{bmatrix}1&4&0\\\\0&0&1\\end{bmatrix}$, then the set of solutions to $A\\vec{x}=\\vec{b}$ is a line.",
+  statement: "If $A\\vec{x}=\\vec{b}$ is consistent and $\\operatorname{rref}(A)=\\begin{bmatrix}1&4&0\\\\0&0&1\\end{bmatrix}$, then the set of solutions to $A\\vec{x}=\\vec{b}$ is a line.",
   answer: true,
   explanation: "There are 3 variables and 2 pivots (in columns 1 and 3), so there is 1 free variable. Since the system is consistent, the solution set is an affine subspace of dimension 1, i.e. a line.",
   tags: ["Linear Systems"]
@@ -1840,7 +1840,7 @@ window.QUESTION_BANK = [
 },
 
 {
-  statement: "If $\\vec{x}^*$ is the least squares solution to $A\\vec{x}=\\vec{b}$, then $\\vec{b}-A\\vec{x}^*$ \\in (\\operatorname{im} A)^\\perp$.",
+  statement: "If $\\vec{x}^*$ is the least squares solution to $A\\vec{x}=\\vec{b}$, then $\\vec{b}-A\\vec{x}^* \\in (\\operatorname{im} A)^\\perp$.",
   answer: true,
   explanation: "The least squares solution satisfies the normal equations $A^T(A\\vec{x}^* - \\vec{b}) = 0$, which implies $A^T(\\vec{b}-A\\vec{x}^*)=0$. Thus $\\vec{b}-A\\vec{x}^*$ is orthogonal to every column of $A$, meaning it lies in $(\\operatorname{im} A)^\\perp$.",
   tags: ["Least Squares"]
