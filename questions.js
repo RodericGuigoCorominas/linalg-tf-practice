@@ -1445,21 +1445,21 @@ window.QUESTION_BANK = [
   statement: "The set of $2 \\times 2$ matrices that have $\\begin{bmatrix}1\\\\3\\end{bmatrix}$ as an eigenvector is a linear space.",
   answer: true,
   explanation: "If $A\\vec v=\\lambda\\vec v$ and $B\\vec v=\\mu\\vec v$, then $(A+B)\\vec v=(\\lambda+\\mu)\\vec v$, and for any scalar $k$, $(kA)\\vec v=(k\\lambda)\\vec v$. So the set is closed under addition and scalar multiplication.",
-  tags: ["Linear Spaces"]
+  tags: ["Abstract Linear Spaces"]
 },
 
 {
   statement: "The polynomials $f_1(x)=x^2+3$, $f_2(x)=2x^2-7$, and $f_3(x)=-3x^2+5$ in $P_2$ are linearly independent.",
   answer: false,
   explanation: "All three lie in $\\operatorname{span}(x^2,1)$, which is 2-dimensional, so they cannot be linearly independent.",
-  tags: ["Linear Spaces"]
+  tags: ["Abstract Linear Spaces"]
 },
 
 {
   statement: "If $T:P_2\\to\\mathbb{R}^3$ is linear with $T(1)=\\begin{bmatrix}1\\\\0\\\\0\\end{bmatrix}$ and $T(x)=\\begin{bmatrix}0\\\\1\\\\0\\end{bmatrix}$, then $T(x^2)$ must equal $\\begin{bmatrix}0\\\\0\\\\1\\end{bmatrix}$.",
   answer: false,
   explanation: "Knowing $T$ on $1$ and $x$ does not determine $T(x^2)$. For example, define $T(ax^2+bx+c)=\\begin{bmatrix}c\\\\b\\\\0\\end{bmatrix}$; then $T(1)$ and $T(x)$ match, but $T(x^2)=\\vec 0$.",
-  tags: ["Linear Spaces"]
+  tags: ["Abstract Linear Spaces"]
 },
 
 {
@@ -1473,7 +1473,7 @@ window.QUESTION_BANK = [
   statement: "If $T:C^{\\infty}\\to\\mathbb{R}$ is the linear transformation defined by $T(f)=f(0)$, then $\\ker(T)$ is finite-dimensional.",
   answer: false,
   explanation: "$\\ker(T)$ is the set of smooth functions with $f(0)=0$, which is infinite-dimensional.",
-  tags: ["Linear Spaces"]
+  tags: ["Abstract Linear Spaces"]
 },
 
 {
@@ -1531,7 +1531,7 @@ window.QUESTION_BANK = [
   statement: "$T:C^\\infty \\to C^\\infty$ defined by $T(f)=f''+4$ is a linear transformation.",
   answer: false,
   explanation: "Linearity requires $T(0)=0$, but $T(0)=4$, which is not the zero function.",
-  tags: ["Linear Spaces"]
+  tags: ["Abstract Linear Spaces"]
 },
 
 {
@@ -1545,7 +1545,7 @@ window.QUESTION_BANK = [
   statement: "If $f_1,f_2,f_3 \\in P_5$ and $c_1f_1+c_2f_2+c_3f_3 = 2f_1-7f_2+5f_3$, then $c_2$ must equal $-7$.",
   answer: false,
   explanation: "If $f_1=f_2=f_3$, then many different triples $(c_1,c_2,c_3)$ satisfy the equation, so $c_2$ need not equal $-7$.",
-  tags: ["Linear Spaces"]
+  tags: ["Abstract Linear Spaces"]
 },
 
 {
@@ -1566,7 +1566,7 @@ window.QUESTION_BANK = [
   statement: "If $2f_1+5f_2-3f_3 = 7f_1+2f_2-4f_3$, then $f_1,f_2,f_3$ are linearly dependent.",
   answer: true,
   explanation: "Rearranging gives $-5f_1+3f_2+f_3=0$, a nontrivial linear relation.",
-  tags: ["Linear Spaces"]
+  tags: ["Abstract Linear Spaces"]
 },
 
 {
@@ -1631,6 +1631,509 @@ window.QUESTION_BANK = [
   explanation: "In general $A(\\vec v-\\vec w)=3\\vec v+3\\vec w$, which is not a scalar multiple of $\\vec v-\\vec w$.",
   tags: ["Diagonalization"]
 },
+
+// Midterm 2 Spring 2026
+{
+  statement: "If the columns of a matrix $A$ are linearly dependent, then the system $A\\vec{x}=\\vec{b}$ can never have a unique solution.",
+  answer: true,
+  explanation: "If the columns of $A$ are linearly dependent, then there is at least one non-pivot column in $\\operatorname{rref}(A)$. Therefore the system has at least one free variable, so it either has infinitely many solutions or is inconsistent.",
+  tags: ["Linear Systems"]
+},
+
+{
+  statement: "The determinant of the matrix $M = \\begin{bmatrix}0 & 0 & 1 \\\\ 0 & 2 & 2 \\\\ 3 & 3 & 3\\end{bmatrix}$ is $6$.",
+  answer: false,
+  explanation: "Expanding along the first row gives $\\det(M)=1\\cdot\\det\\begin{bmatrix}0&2\\\\3&3\\end{bmatrix}=0\\cdot 3-2\\cdot 3=-6$.",
+  tags: ["Determinants"]
+},
+
+{
+  statement: "If $A$ and $B$ are $n\\times n$ orthogonal matrices, then $AB$ is an orthogonal matrix.",
+  answer: true,
+  explanation: "If $A$ and $B$ are orthogonal, then $AA^T=BB^T=I_n$. Hence $(AB)(AB)^T=A(BB^T)A^T=AA^T=I_n$, so $AB$ is orthogonal.",
+  tags: ["Orthogonal Matrices"]
+},
+
+{
+  statement: "Let $A$ be an $n\\times n$ matrix. If $A$ is symmetric, then $e^A$ is symmetric.",
+  answer: true,
+  explanation: "Since $A$ is symmetric, it is orthogonally diagonalizable: $A=SDS^T$ with $S$ orthogonal and $D$ diagonal. Then $e^A=Se^DS^T$, and since $e^D$ is diagonal, $e^A$ is symmetric.",
+  tags: ["Symmetric Matrices and the Spectral Theorem"]
+},
+
+{
+  statement: "If two $3\\times 3$ matrices have the same determinant and the same trace, then they have the same characteristic polynomial.",
+  answer: false,
+  explanation: "For example, let $A=\\begin{bmatrix}1&0&0\\\\0&1&0\\\\0&0&0\\end{bmatrix}$ and $B=\\begin{bmatrix}2&0&0\\\\0&0&0\\\\0&0&0\\end{bmatrix}$. Then $\\operatorname{tr}(A)=\\operatorname{tr}(B)=2$ and $\\det(A)=\\det(B)=0$, but their characteristic polynomials are different: $(1-\\lambda)^2\\lambda$ and $(2-\\lambda)\\lambda^2$.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "Let $A$ be a $2\\times 2$ matrix that is diagonalizable over $\\mathbb{R}$. Then there exists a $2\\times 2$ real matrix $B$ such that $B^3=A$.",
+  answer: true,
+  explanation: "Since $A$ is diagonalizable over $\\mathbb{R}$, we can write $A=S\\begin{bmatrix}\\lambda_1&0\\\\0&\\lambda_2\\end{bmatrix}S^{-1}$ with $S$ real and invertible and $\\lambda_1,\\lambda_2\\in\\mathbb{R}$. Then $B=S\\begin{bmatrix}\\sqrt[3]{\\lambda_1}&0\\\\0&\\sqrt[3]{\\lambda_2}\\end{bmatrix}S^{-1}$ is real and satisfies $B^3=A$.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "Let $A,B$ be $2\\times 2$ matrices such that $A=B^2$. If $A$ is diagonalizable, then $B$ is diagonalizable.",
+  answer: false,
+  explanation: "Take $A=\\begin{bmatrix}0&0\\\\0&0\\end{bmatrix}$ and $B=\\begin{bmatrix}0&1\\\\0&0\\end{bmatrix}$. Then $A=B^2$, and $A$ is diagonalizable, but $B$ is not diagonalizable because its only eigenvalue is $0$ with algebraic multiplicity $2$ and geometric multiplicity $1$.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "The least squares solution $\\vec x^*$ of a system $A\\vec x=\\vec b$ satisfies the equation $A\\vec x^*=\\operatorname{proj}_{\\operatorname{im}A}\\vec b$.",
+  answer: true,
+  explanation: "By definition, a least-squares solution makes $A\\vec x^*$ the point in $\\operatorname{im}(A)$ closest to $\\vec b$. Therefore $A\\vec x^*=\\operatorname{proj}_{\\operatorname{im}(A)}\\vec b$.",
+  tags: ["Least Squares"]
+},
+
+{
+  statement: "Let $A$ be an $m\\times n$ matrix. If $A^TA$ is invertible, then $m<n$.",
+  answer: false,
+  explanation: "If $A^TA$ is invertible, then the columns of $A$ are linearly independent. So $A$ has $n$ linearly independent columns in $\\mathbb{R}^m$, which implies $n\\le m$, not $m<n$.",
+  tags: ["Image, Kernel and Rank Nullity"]
+},
+
+{
+  statement: "Let $A$ and $B$ be $2\\times 2$ diagonalizable matrices. Then $AB$ is diagonalizable.",
+  answer: false,
+  explanation: "For example, let $A=\\begin{bmatrix}-2&-2\\\\-2&-1\\end{bmatrix}$ and $B=\\begin{bmatrix}\\tfrac12&-\\tfrac12\\\\-1&0\\end{bmatrix}$. Both are diagonalizable, but $AB=\\begin{bmatrix}1&1\\\\0&1\\end{bmatrix}$, which is not diagonalizable.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "Let $A$ be a symmetric $n\\times n$ matrix. If $A^2=A$, then $A$ is the matrix of the projection onto a subspace $V\\subset\\mathbb{R}^n$.",
+  answer: true,
+  explanation: "Since $A$ is symmetric, it is orthogonally diagonalizable: $A=QDQ^T$ for some orthogonal $Q$ and diagonal $D$. The condition $A^2=A$ implies $D^2=D$, so each diagonal entry of $D$ is either $0$ or $1$. Thus $A$ is the orthogonal projection onto the eigenspace corresponding to eigenvalue $1$.",
+  tags: ["Symmetric Matrices and the Spectral Theorem"]
+},
+
+{
+  statement: "If $A$ and $B$ are similar matrices, then $\\det(A)=\\det(B)$.",
+  answer: true,
+  explanation: "If $B=S^{-1}AS$ for some invertible matrix $S$, then $\\det(B)=\\det(S^{-1})\\det(A)\\det(S)=\\det(A)$.",
+  tags: ["Determinants"]
+},
+
+{
+  statement: "Let $A$ be a $3\\times 3$ matrix with characteristic polynomial $(2-\\lambda)^2(1-\\lambda)$. Then $A$ is similar to the matrix $\\begin{bmatrix}2&0&0\\\\0&2&0\\\\0&0&1\\end{bmatrix}$.",
+  answer: false,
+  explanation: "The characteristic polynomial determines the eigenvalues and their algebraic multiplicities, but not necessarily diagonalizability. For example, $A=\\begin{bmatrix}2&1&0\\\\0&2&0\\\\0&0&1\\end{bmatrix}$ has this characteristic polynomial but is not diagonalizable, so it is not similar to the diagonal matrix.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "Let $A$ be a symmetric matrix. If $\\vec v\\in\\ker(A)$ and $\\vec w\\in\\operatorname{im}(A)$, then $\\vec v$ and $\\vec w$ are orthogonal.",
+  answer: true,
+  explanation: "For any matrix $A$, $\\ker(A^T)=(\\operatorname{im}(A))^\\perp$. Since $A$ is symmetric, $A^T=A$, so $\\ker(A)=(\\operatorname{im}(A))^\\perp$. Therefore every vector in the kernel is orthogonal to every vector in the image.",
+  tags: ["Symmetric Matrices and the Spectral Theorem"]
+},
+
+{
+  statement: "If $\\vec v$ is an eigenvector of a matrix $A$ with eigenvalue $\\lambda$, then $\\vec v$ is an eigenvector of $A^2$ with the same eigenvalue $\\lambda$.",
+  answer: false,
+  explanation: "If $A\\vec v=\\lambda\\vec v$, then $A^2\\vec v=A(A\\vec v)=A(\\lambda\\vec v)=\\lambda A\\vec v=\\lambda^2\\vec v$. So $\\vec v$ is an eigenvector of $A^2$, but with eigenvalue $\\lambda^2$.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "A scalar $\\lambda$ is an eigenvalue for $A$ if and only if the matrix $A-\\lambda I$ is not invertible.",
+  answer: true,
+  explanation: "By definition, $\\lambda$ is an eigenvalue of $A$ exactly when there exists a nonzero vector $\\vec v$ such that $A\\vec v=\\lambda\\vec v$, equivalently $(A-\\lambda I)\\vec v=\\vec 0$ has a nonzero solution. That happens exactly when $A-\\lambda I$ is not invertible.",
+  tags: ["Diagonalization"]
+},
+
+{
+  statement: "If $\\operatorname{rref}(A)$ has a leading one in every row, then the system $A\\vec x=\\vec b$ must have a unique solution.",
+  answer: false,
+  explanation: "A leading one in every row means there is no zero row, so the system is consistent for every $\\vec b$. But there may still be free variables, so the solution need not be unique. For example, $A=\\begin{bmatrix}1&0&0\\\\0&1&0\\end{bmatrix}$ has a leading one in every row, but $A\\vec x=\\vec b$ has infinitely many solutions.",
+  tags: ["Linear Systems"]
+},
+
+{
+  statement: "Let $A$ denote a clockwise rotation by $45^\\circ$ in $\\mathbb{R}^2$, and $B$ an orthogonal projection onto a line $L$ through the origin in $\\mathbb{R}^2$. Then $\\ker(AB)=\\operatorname{im}(BA)$.",
+  answer: false,
+  explanation: "Since $A$ is a rotation, it is invertible, so $\\ker(AB)=\\ker(B)=L^\\perp$. Also, since $A$ maps $\\mathbb{R}^2$ onto itself, $\\operatorname{im}(BA)=\\operatorname{im}(B)=L$. In general $L^\\perp\\ne L$, so these subspaces are not equal.",
+  tags: ["Geometric Transformations"]
+},
+
+{
+  statement: "Let $A$ denote a clockwise rotation by $45^\\circ$ in $\\mathbb{R}^2$, and $B$ an orthogonal projection onto a line $L$ through the origin in $\\mathbb{R}^2$. Then $\\ker(BA)=\\operatorname{im}(AB)$.",
+  answer: true,
+  explanation: "Since $\\ker(B)=L^\\perp$, we have $\\ker(BA)=A^{-1}(L^\\perp)$. Also $\\operatorname{im}(AB)=A(\\operatorname{im}(B))=A(L)$. Rotating $L^\\perp$ counterclockwise by $45^\\circ$ gives the same line as rotating $L$ clockwise by $45^\\circ$, so these two subspaces are equal.",
+  tags: ["Geometric Transformations"]
+},
+
+// Final Practice 1
+
+{
+  "statement": "A system of linear equations $A \\vec{x} = \\vec{b}$ which is consistent has exactly one solution.",
+  "answer": false,
+  "explanation": "Consistency means there is at least one solution, but there may be infinitely many. For example, a system with fewer equations than variables can have infinitely many solutions.",
+  "tags": ["Linear Systems"]
+},
+{
+  "statement": "There are $2 \\times 2$ matrices $A$ and $B$ such that $A$ represents projection onto a line in $\\mathbb{R}^2$, $B$ represents a rotation, and $AB$ represents a rotation.",
+  "answer": false,
+  "explanation": "The composition $AB$ maps into the image of $A$, which is a line. A rotation in $\\mathbb{R}^2$ must have full image $\\mathbb{R}^2$, so $AB$ cannot be a rotation.",
+  "tags": ["Geometric Transformations"]
+},
+{
+  "statement": "The linear space $P_3$ of polynomials of degree $\\leq 3$ has dimension 3.",
+  "answer": false,
+  "explanation": "A basis is $(1, x, x^2, x^3)$, so the dimension is 4.",
+  "tags": ["Abstract Linear Spaces"]
+},
+{
+  "statement": "Let $D: C^\\infty \\to C^\\infty$ be defined by $D(f)=f'$. Then $f(t)=e^t$ is an eigenfunction of $D^2$ with eigenvalue 1.",
+  "answer": true,
+  "explanation": "Applying $D^2$ gives the second derivative of $e^t$, which is $e^t$, so $D^2(e^t)=1\\cdot e^t$.",
+  "tags": ["Linear Differential Equations"]
+},
+{
+  "statement": "If all eigenvalues of a $2 \\times 2$ matrix $A$ are 0, then $A$ is the zero matrix.",
+  "answer": false,
+  "explanation": "A matrix can have all eigenvalues zero without being zero, e.g. $\\begin{bmatrix}0 & 1 \\\\ 0 & 0\\end{bmatrix}$.",
+  "tags": ["Diagonalization"]
+},
+{
+  "statement": "The set of solutions of the heat equation $\\frac{\\partial f}{\\partial t} = \\mu \\frac{\\partial^2 f}{\\partial x^2}$ satisfying $f(t,0)=f(t,\\pi)=5$ is a linear space.",
+  "answer": false,
+  "explanation": "The zero function is not in the set since it does not satisfy the boundary conditions, so the set is not a linear space.",
+  "tags": ["Partial Differential Equations"]
+},
+{
+  "statement": "$A = \\begin{bmatrix}4/13 & 6/13 \\\\ 7/13 & 9/13\\end{bmatrix}$ represents projection onto the line spanned by $(2,3)$.",
+  "answer": false,
+  "explanation": "The image of a projection matrix should equal the target line, but the columns of $A$ are not multiples of $(2,3)$.",
+  "tags": ["Geometric Transformations"]
+},
+{
+  "statement": "Let $T_1, T_2 : \\mathbb{R}^3 \\to \\mathbb{R}^5$ be linear. If they agree on a basis of $\\mathbb{R}^3$, then they agree on all vectors.",
+  "answer": true,
+  "explanation": "A linear transformation is completely determined by its values on a basis.",
+  "tags": ["Linear Transformations"]
+},
+{
+  "statement": "If $f_1, f_2, f_3$ are linearly dependent in a linear space, then $f_3$ is a linear combination of $f_1$ and $f_2$.",
+  "answer": false,
+  "explanation": "Linear dependence only guarantees some nontrivial relation; it need not express $f_3$ in terms of $f_1$ and $f_2$ specifically.",
+  "tags": ["Linear Combinations"]
+},
+{
+  "statement": "If $f = 2f_1 + 5f_2 + 7f_3 = -3f_1 + 6f_2 + 4f_3$, then $f_1, f_2, f_3$ are linearly dependent.",
+  "answer": true,
+  "explanation": "Subtracting gives a nontrivial linear relation $5f_1 - f_2 + 3f_3 = 0$.",
+  "tags": ["Linear Combinations"]
+},
+{
+  "statement": "It is possible to find four linearly independent solutions to $f''' - 4f'' + 5f' + 7f = 0$.",
+  "answer": false,
+  "explanation": "A third-order linear homogeneous differential equation has a 3-dimensional solution space.",
+  "tags": ["Linear Differential Equations"]
+},
+{
+  "statement": "There is a real $2 \\times 2$ symmetric matrix with trace 4 and determinant 6.",
+  "answer": false,
+  "explanation": "The characteristic polynomial has negative discriminant, so the eigenvalues are non-real, which is impossible for a real symmetric matrix.",
+  "tags": ["Symmetric Matrices and the Spectral Theorem"]
+},
+{
+  "statement": "If a subspace of $\\mathbb{R}^7$ is spanned by three distinct vectors, then its dimension is 3.",
+  "answer": false,
+  "explanation": "The vectors may be linearly dependent, so the dimension could be less than 3.",
+  "tags": ["Subspaces"]
+},
+{
+  "statement": "$T(M)=\\mathrm{rank}(M)$ defines a linear transformation from $\\mathbb{R}^{2\\times2}$ to $\\mathbb{R}$.",
+  "answer": false,
+  "explanation": "Rank is not linear; it does not preserve scalar multiplication or addition.",
+  "tags": ["Abstract Linear Transformations"]
+},
+{
+  "statement": "If $\\vec{0}$ is a least squares solution to $A\\vec{x}=\\vec{b}$, then $\\vec{b} \\in (\\mathrm{im}\\,A)^\\perp$.",
+  "answer": true,
+  "explanation": "Then $A\\vec{0}=0$ is the projection of $\\vec{b}$ onto $\\mathrm{im}(A)$, so $\\vec{b}$ is orthogonal to the image.",
+  "tags": ["Least Squares"]
+},
+{
+  "statement": "The set of polynomials in $P_2$ satisfying $f(2)=0$ is a linear space.",
+  "answer": true,
+  "explanation": "It is closed under addition and scalar multiplication.",
+  "tags": ["Abstract Linear Spaces"]
+},
+{
+  "statement": "With inner product $\\langle f,g \\rangle = f(-1)g(-1)+f(0)g(0)+f(1)g(1)$, the polynomials $1$ and $t$ are orthogonal.",
+  "answer": true,
+  "explanation": "Compute directly: $1\\cdot(-1)+1\\cdot0+1\\cdot1 = 0$.",
+  "tags": ["Inner Products"]
+},
+{
+  "statement": "$f(t,x)=e^{-\\mu t}\\sin t - e^{-25\\mu t}\\sin(5t)$ solves the heat equation $f_t = \\mu f_{xx}$.",
+  "answer": false,
+  "explanation": "The function does not depend on $x$, so $f_{xx}=0$ while $f_t \\neq 0$.",
+  "tags": ["Partial Differential Equations"]
+},
+{
+  "statement": "For any matrix $A$, $\\mathrm{im}(A) = \\mathrm{im}(\\mathrm{rref}(A))$.",
+  "answer": false,
+  "explanation": "Row operations change the column space, so the images need not match.",
+  "tags": ["Image, Kernel and Rank Nullity"]
+},
+{
+  "statement": "If $A$ and $B$ are diagonalizable matrices with the same eigenvectors, then $A+B$ is diagonalizable.",
+  "answer": true,
+  "explanation": "They can be simultaneously diagonalized, so $A+B$ is diagonalizable.",
+  "tags": ["Diagonalization"]
+},
+
+// Final Practice 2
+
+  {
+    "statement": "There is a linear transformation $T: \\mathbb{R}^3 \\to \\mathbb{R}^2$ such that $T\\!\\left(\\begin{bmatrix}1\\\\3\\\\4\\end{bmatrix}\\right)=\\begin{bmatrix}1\\\\2\\end{bmatrix}$ and $T\\!\\left(\\begin{bmatrix}2\\\\6\\\\8\\end{bmatrix}\\right)=\\begin{bmatrix}1\\\\3\\end{bmatrix}$.",
+    "answer": false,
+    "explanation": "A linear transformation must preserve scalar multiplication. Since $\\begin{bmatrix}2\\\\6\\\\8\\end{bmatrix}=2\\begin{bmatrix}1\\\\3\\\\4\\end{bmatrix}$, linearity would require $T\\!\\left(\\begin{bmatrix}2\\\\6\\\\8\\end{bmatrix}\\right)=2T\\!\\left(\\begin{bmatrix}1\\\\3\\\\4\\end{bmatrix}\\right)=\\begin{bmatrix}2\\\\4\\end{bmatrix}$, not $\\begin{bmatrix}1\\\\3\\end{bmatrix}$.",
+    "tags": ["Linear Transformations"]
+  },
+  {
+    "statement": "If $A$ is a $5\\times 5$ matrix, then the sum of the geometric multiplicities of the real eigenvalues of $A$ is less than or equal to the sum of the algebraic multiplicities.",
+    "answer": true,
+    "explanation": "For each eigenvalue, geometric multiplicity is always less than or equal to algebraic multiplicity. Summing over the real eigenvalues preserves this inequality.",
+    "tags": ["Diagonalization"]
+  },
+  {
+    "statement": "For any invertible $3\\times 3$ matrix $A$, the span of the columns of $A$ is an eigenspace of $A$.",
+    "answer": false,
+    "explanation": "If $A$ is invertible, its columns span all of $\\mathbb{R}^3$. But $\\mathbb{R}^3$ need not be an eigenspace. For example, for $A=\\operatorname{diag}(4,5,6)$, the eigenspaces are the coordinate axes, not all of $\\mathbb{R}^3$.",
+    "tags": ["Image, Kernel and Rank Nullity"]
+  },
+  {
+    "statement": "If $V$ is the set of solutions of $f^{(100)}+4f=0$ satisfying $f(3)=0$, then $V$ is a linear space.",
+    "answer": true,
+    "explanation": "The differential equation is linear and homogeneous, and the condition $f(3)=0$ is also linear. So sums and scalar multiples of functions in $V$ still satisfy both conditions.",
+    "tags": ["Abstract Linear Spaces"]
+  },
+  {
+    "statement": "If we use the inner product $\\langle f,g\\rangle=\\frac{1}{\\pi}\\int_{-\\pi}^{\\pi} f(x)g(x)\\,dx$ on $PS[-\\pi,\\pi]$, then $\\|\\sin(5x)-\\sin(10x)\\|=2$.",
+    "answer": false,
+    "explanation": "In this inner product, $\\sin(5x)$ and $\\sin(10x)$ are orthonormal. Therefore $\\|\\sin(5x)-\\sin(10x)\\|=\\sqrt{1^2+(-1)^2}=\\sqrt{2}$.",
+    "tags": ["Inner Products"]
+  },
+  {
+    "statement": "If $\\vec v_1,\\vec v_2,\\vec v_3$ are linearly independent vectors in $\\mathbb{R}^5$ and $A$ is an invertible $5\\times 5$ matrix, then $A\\vec v_1,A\\vec v_2,A\\vec v_3$ are linearly independent.",
+    "answer": true,
+    "explanation": "If $c_1A\\vec v_1+c_2A\\vec v_2+c_3A\\vec v_3=\\vec 0$, then $A(c_1\\vec v_1+c_2\\vec v_2+c_3\\vec v_3)=\\vec 0$. Since $A$ is invertible, this implies $c_1\\vec v_1+c_2\\vec v_2+c_3\\vec v_3=\\vec 0$, so all coefficients are zero.",
+    "tags": ["Linear Transformations"]
+  },
+  {
+    "statement": "Every $3\\times 3$ matrix has a real eigenvector.",
+    "answer": true,
+    "explanation": "A $3\\times 3$ real matrix has three eigenvalues over $\\mathbb{C}$ counting multiplicity. Non-real eigenvalues occur in complex conjugate pairs, so at least one eigenvalue must be real, and therefore there is a real eigenvector.",
+    "tags": ["Diagonalization"]
+  },
+  {
+    "statement": "If $A$ is a symmetric matrix such that $A^5=0$, then $A=0$.",
+    "answer": true,
+    "explanation": "A symmetric matrix is diagonalizable, so $A=SDS^{-1}$ for some diagonal matrix $D$. Then $A^5=SD^5S^{-1}=0$, so $D^5=0$. Every diagonal entry of $D$ must therefore be $0$, so $D=0$ and hence $A=0$.",
+    "tags": ["Symmetric Matrices and the Spectral Theorem"]
+  },
+  {
+    "statement": "If $A$ is a $7\\times 4$ matrix and the equation $A\\vec x=\\vec b$ is inconsistent for some $\\vec b\\in\\mathbb{R}^7$, then the rank of $A$ must be less than $4$.",
+    "answer": false,
+    "explanation": "A $7\\times 4$ matrix can have full column rank $4$ and still fail to hit every vector in $\\mathbb{R}^7$. For example, a matrix with pivot columns in the first four rows has rank $4$ but its image is only a 4-dimensional subspace of $\\mathbb{R}^7$, so some $\\vec b$ make the system inconsistent.",
+    "tags": ["Image, Kernel and Rank Nullity"]
+  },
+  {
+    "statement": "If a matrix has kernel $\\{\\vec 0\\}$, then it must be invertible.",
+    "answer": false,
+    "explanation": "This is only guaranteed for square matrices. A non-square matrix can have trivial kernel and still not be invertible, for example $\\begin{bmatrix}1\\\\0\\end{bmatrix}$.",
+    "tags": ["Matrix Inverses"]
+  },
+  {
+    "statement": "If $A$ and $B$ are $3\\times 3$ matrices that both have eigenvalues $1,2,4$, then there is an invertible matrix $S$ such that $A=SBS^{-1}$.",
+    "answer": true,
+    "explanation": "Because the eigenvalues are distinct, both matrices are diagonalizable. Each is similar to $\\operatorname{diag}(1,2,4)$, so they are similar to each other.",
+    "tags": ["Diagonalization"]
+  },
+  {
+    "statement": "If $\\lambda$ is an eigenvalue of a matrix $A$, then $\\lambda+5$ is an eigenvalue of $A+5I$.",
+    "answer": true,
+    "explanation": "If $A\\vec v=\\lambda\\vec v$ for some nonzero vector $\\vec v$, then $(A+5I)\\vec v=A\\vec v+5\\vec v=(\\lambda+5)\\vec v$.",
+    "tags": ["Diagonalization"]
+  },
+  {
+    "statement": "The general solution of $f''+4f'+2f=0$ is $f(t)=c_1e^{-2t}\\cos(\\sqrt{2}t)+c_2e^{-2t}\\sin(\\sqrt{2}t)$.",
+    "answer": false,
+    "explanation": "The characteristic equation is $r^2+4r+2=0$, whose roots are $-2\\pm\\sqrt{2}$. These are real, so the general solution is $f(t)=c_1e^{(-2-\\sqrt{2})t}+c_2e^{(-2+\\sqrt{2})t}$.",
+    "tags": ["Linear Differential Equations"]
+  },
+  {
+    "statement": "The solution set of the differential equation $f'+f=e^{3t}$ is $\\{ce^{-t}+\\tfrac14 e^{3t}: c\\in\\mathbb{R}\\}$.",
+    "answer": true,
+    "explanation": "A particular solution is $\\tfrac14 e^{3t}$, and the homogeneous equation $f'+f=0$ has solution $ce^{-t}$. Therefore the full solution set is $ce^{-t}+\\tfrac14 e^{3t}$.",
+    "tags": ["Linear Differential Equations"]
+  },
+  {
+    "statement": "If $A$ represents orthogonal projection onto a plane in $\\mathbb{R}^3$, then $\\det(A+3I)$ cannot be equal to $27$.",
+    "answer": true,
+    "explanation": "Projection onto a plane in $\\mathbb{R}^3$ has eigenvalues $1,1,0$. So $A+3I$ has eigenvalues $4,4,3$, and its determinant is $4\\cdot4\\cdot3=48$, not $27$.",
+    "tags": ["Geometric Transformations"]
+  },
+  {
+    "statement": "There is a $2\\times 2$ matrix $A$ such that $A^2=-I_2$.",
+    "answer": true,
+    "explanation": "For example, the matrix representing rotation by $90^\\circ$ in $\\mathbb{R}^2$ satisfies $A^2=-I_2$.",
+    "tags": ["Geometric Transformations"]
+  },
+  {
+    "statement": "If $V$ is a subspace of $\\mathbb{R}^5$ and $\\vec x\\in\\mathbb{R}^5$, then $\\|\\vec x-\\operatorname{proj}_V(\\vec x)\\|^2+\\|\\operatorname{proj}_V(\\vec x)\\|^2=\\|\\vec x\\|^2$.",
+    "answer": true,
+    "explanation": "The vectors $\\operatorname{proj}_V(\\vec x)$ and $\\vec x-\\operatorname{proj}_V(\\vec x)$ are orthogonal, so the Pythagorean Theorem gives the identity.",
+    "tags": ["Orthogonal Matrices"]
+  },
+  {
+    "statement": "There is a subspace $V$ of $\\mathbb{R}^3$ such that $\\dim(V^\\perp)=\\dim(V)$.",
+    "answer": false,
+    "explanation": "For any subspace of $\\mathbb{R}^3$, we have $\\dim(V)+\\dim(V^\\perp)=3$. These two dimensions cannot be equal because then their sum would be even, not $3$.",
+    "tags": ["Subspaces"]
+  },
+  {
+    "statement": "If $A$ is an $n\\times n$ matrix and $S$ is a matrix whose columns form an eigenbasis for $A$, then $AS=DS$ for some diagonal matrix $D$.",
+    "answer": false,
+    "explanation": "If the columns of $S$ are eigenvectors of $A$, then the correct relation is $AS=SD$, not $DS$. In $AS=SD$, the diagonal entries of $D$ are the corresponding eigenvalues.",
+    "tags": ["Diagonalization"]
+  },
+  {
+    "statement": "$(1+x,\\;2x+3,\\;3x^2+7,\\;x^2-x)$ is a basis of $P_2$.",
+    "answer": false,
+    "explanation": "The space $P_2$ has dimension $3$, so any basis must have exactly $3$ elements. This set has $4$ elements.",
+    "tags": ["Abstract Linear Spaces"]
+  },
+
+// Final Practice 3
+
+  {
+    "statement": "A linear system with 6 equations and 7 unknowns must have at least one solution.",
+    "answer": false,
+    "explanation": "A system can still be inconsistent even if it has fewer equations than unknowns. For example, two equations with the same left-hand side but different constants are inconsistent.",
+    "tags": ["Linear Systems"]
+  },
+  {
+    "statement": "If the sum of all algebraic multiplicities of the real eigenvalues of a $3\\times 3$ matrix $A$ is equal to $3$, then the matrix is diagonalizable over $\\mathbb{R}$.",
+    "answer": false,
+    "explanation": "Having three real eigenvalues counted with algebraic multiplicity does not guarantee diagonalizability. A Jordan block such as $\\begin{bmatrix}1&1&1\\\\0&1&1\\\\0&0&1\\end{bmatrix}$ has only the real eigenvalue $1$ with algebraic multiplicity $3$, but it is not diagonalizable.",
+    "tags": ["Diagonalization"]
+  },
+  {
+    "statement": "$I:C^\\infty\\to\\mathbb{R}$ defined by $I(f)=\\int_0^1 x^2 f(x)\\,dx$ is a linear transformation.",
+    "answer": true,
+    "explanation": "Integration is linear, so $I(f+g)=I(f)+I(g)$ and $I(kf)=kI(f)$.",
+    "tags": ["Abstract Linear Transformations"]
+  },
+  {
+    "statement": "Every $2\\times 2$ matrix is diagonalizable over $\\mathbb{C}$.",
+    "answer": false,
+    "explanation": "A Jordan block such as $\\begin{bmatrix}1&1\\\\0&1\\end{bmatrix}$ is not diagonalizable, even over $\\mathbb{C}$.",
+    "tags": ["Diagonalization"]
+  },
+  {
+    "statement": "The linear system $\\begin{bmatrix}1&2\\\\3&7\\\\-2&5\\\\6&4\\\\14&-3\\end{bmatrix}\\vec{x}=\\begin{bmatrix}a\\\\0\\\\b\\\\0\\\\c\\end{bmatrix}$ is consistent for all real numbers $a,b,c$.",
+    "answer": false,
+    "explanation": "The right-hand sides of that form span a 3-dimensional subspace of $\\mathbb{R}^5$, but the image of the $5\\times 2$ coefficient matrix has dimension at most 2. So not all such vectors can lie in the image.",
+    "tags": ["Linear Systems"]
+  },
+  {
+    "statement": "If $\\vec v_1,\\vec v_2,\\vec v_3$ are any linearly dependent vectors in $\\mathbb{R}^n$, then $\\vec v_3$ is a linear combination of $\\vec v_1$ and $\\vec v_2$.",
+    "answer": false,
+    "explanation": "Linear dependence only guarantees that one of the vectors is a linear combination of the others, not necessarily $\\vec v_3$. For example, if $\\vec v_1=\\vec v_2=\\vec e_1$ and $\\vec v_3=\\vec e_2$, then the three vectors are linearly dependent but $\\vec v_3$ is not in the span of $\\vec v_1$ and $\\vec v_2$.",
+    "tags": ["Linear Combinations"]
+  },
+  {
+    "statement": "If $A$ is a symmetric $4\\times 4$ matrix satisfying $A^2=A$, then $A$ has at least one eigenvalue with algebraic multiplicity greater than $1$.",
+    "answer": true,
+    "explanation": "Any eigenvalue $\\lambda$ must satisfy $\\lambda^2=\\lambda$, so the only possible eigenvalues are $0$ and $1$. Since the algebraic multiplicities add up to $4$, at least one of these eigenvalues must have algebraic multiplicity greater than $1$.",
+    "tags": ["Symmetric Matrices and the Spectral Theorem"]
+  },
+  {
+    "statement": "If $(f_1,f_2,f_3)$ is a basis of a linear space $V$, then $(f_1,f_1+f_2,f_2+f_3)$ is also a basis of $V$.",
+    "answer": true,
+    "explanation": "If $c_1f_1+c_2(f_1+f_2)+c_3(f_2+f_3)=0$, then $(c_1+c_2)f_1+(c_2+c_3)f_2+c_3f_3=0$. Since $(f_1,f_2,f_3)$ is a basis, all coefficients must be zero, so $c_1=c_2=c_3=0$. Thus the new list is linearly independent, and since $V$ has dimension 3, it is a basis.",
+    "tags": ["Abstract Linear Spaces"]
+  },
+  {
+    "statement": "If $T:P_3\\to P_3$ is a linear transformation and $(1,x)$ is a basis of $\\ker(T)$, then $(x^2,x^3)$ is a basis of $\\operatorname{im}(T)$.",
+    "answer": false,
+    "explanation": "Knowing that $\\ker(T)$ has basis $(1,x)$ tells us only that $\\dim(\\ker T)=2$, so rank-nullity gives $\\dim(\\operatorname{im}T)=2$. But the image need not be exactly $\\operatorname{span}(x^2,x^3)$. For example, if $T(f)=f''$, then the image is $P_1$.",
+    "tags": ["Abstract Linear Transformations"]
+  },
+  {
+    "statement": "If $\\mathfrak{B}=\\left(\\begin{bmatrix}1\\\\2\\\\3\\end{bmatrix},\\begin{bmatrix}2\\\\0\\\\7\\end{bmatrix},\\begin{bmatrix}-2\\\\1\\\\4\\end{bmatrix}\\right)$ is a basis of $\\mathbb{R}^3$ and $\\vec x=\\begin{bmatrix}0\\\\5\\\\10\\end{bmatrix}$, then $[\\vec x]_{\\mathfrak{B}}=\\begin{bmatrix}2\\\\0\\\\1\\end{bmatrix}$.",
+    "answer": true,
+    "explanation": "This coordinate vector means $\\vec x=2\\begin{bmatrix}1\\\\2\\\\3\\end{bmatrix}+0\\begin{bmatrix}2\\\\0\\\\7\\end{bmatrix}+1\\begin{bmatrix}-2\\\\1\\\\4\\end{bmatrix}=\\begin{bmatrix}0\\\\5\\\\10\\end{bmatrix}$, which is correct.",
+    "tags": ["Coordinates"]
+  },
+  {
+    "statement": "The rank of a diagonal matrix $A$ equals the number of nonzero entries in $A$.",
+    "answer": true,
+    "explanation": "In a diagonal matrix, each nonzero diagonal entry gives a nonzero column that is a multiple of a different standard basis vector. These nonzero columns are linearly independent, so the rank is exactly the number of nonzero diagonal entries.",
+    "tags": ["Image, Kernel and Rank Nullity"]
+  },
+  {
+    "statement": "If an $n\\times n$ matrix $A$ has an eigenbasis $(\\vec v_1,\\ldots,\\vec v_n)$, then applying Gram-Schmidt to $\\vec v_1,\\ldots,\\vec v_n$ gives an orthonormal eigenbasis $(\\vec u_1,\\ldots,\\vec u_n)$ for $A$.",
+    "answer": false,
+    "explanation": "Gram-Schmidt preserves span but not the property of being an eigenvector. The orthonormal vectors it produces need not be eigenvectors of $A$.",
+    "tags": ["Orthogonal Matrices"]
+  },
+  {
+    "statement": "If $f_1$ and $f_2$ are solutions of $f'''(t)-7f(t)=e^{2t}$, then $f_1-f_2$ is a solution of $f'''(t)-7f(t)=0$.",
+    "answer": true,
+    "explanation": "Subtracting the two equations $f_1'''-7f_1=e^{2t}$ and $f_2'''-7f_2=e^{2t}$ gives $(f_1-f_2)'''-7(f_1-f_2)=0$.",
+    "tags": ["Linear Differential Equations"]
+  },
+  {
+    "statement": "There is a linear transformation $T:P_4\\to\\mathbb{R}^2$ such that $T(x^3-2x)=\\begin{bmatrix}1\\\\1\\end{bmatrix}$, $T(x^3+2x)=\\begin{bmatrix}1\\\\-1\\end{bmatrix}$, and $T(x^3)=\\begin{bmatrix}0\\\\1\\end{bmatrix}$.",
+    "answer": false,
+    "explanation": "By linearity, $T(2x^3)=T(x^3-2x)+T(x^3+2x)=\\begin{bmatrix}2\\\\0\\end{bmatrix}$, so $T(x^3)=\\frac12\\begin{bmatrix}2\\\\0\\end{bmatrix}=\\begin{bmatrix}1\\\\0\\end{bmatrix}$. This contradicts the claimed value $\\begin{bmatrix}0\\\\1\\end{bmatrix}$.",
+    "tags": ["Abstract Linear Transformations"]
+  },
+  {
+    "statement": "If $A$ is a $5\\times 5$ matrix with rank $2$, then the eigenvalue $0$ has algebraic multiplicity $3$.",
+    "answer": false,
+    "explanation": "Rank-nullity implies that $\\dim(\\ker A)=3$, so the eigenvalue $0$ has geometric multiplicity $3$. But its algebraic multiplicity can be larger than 3.",
+    "tags": ["Image, Kernel and Rank Nullity"]
+  },
+  {
+    "statement": "If $A$ is a $2\\times 2$ matrix with $\\det A=0$, then the continuous dynamical system $\\dfrac{d\\vec{x}}{dt}=A\\vec{x}$ has infinitely many solutions satisfying the initial condition $\\vec{x}(0)=\\begin{bmatrix}1\\\\2\\end{bmatrix}$.",
+    "answer": false,
+    "explanation": "A linear system of differential equations with a given initial condition always has exactly one solution, namely $\\vec{x}(t)=e^{At}\\vec{x}(0)$.",
+    "tags": ["Continuous Dynamical Systems"]
+  },
+  {
+    "statement": "If $V,W,U$ are linear spaces and $T:V\\to W$ and $S:W\\to U$ are linear transformations, then the composition $C:V\\to U$ defined by $C(v)=S(T(v))$ is a linear transformation.",
+    "answer": true,
+    "explanation": "Composition of linear maps preserves addition and scalar multiplication, so $C$ is linear.",
+    "tags": ["Abstract Linear Transformations"]
+  },
+  {
+    "statement": "A $3\\times 3$ matrix $A$ is invertible if and only if all of its eigenvalues are positive.",
+    "answer": false,
+    "explanation": "A matrix is invertible if and only if all of its eigenvalues are nonzero, not necessarily positive. Negative eigenvalues are allowed.",
+    "tags": ["Matrix Inverses"]
+  },
+  {
+    "statement": "If $T:P_4\\to\\mathbb{R}^{5\\times 7}$ is a linear transformation, then $\\dim(\\operatorname{im}T)\\le 5$.",
+    "answer": true,
+    "explanation": "Since $\\dim(P_4)=5$, rank-nullity gives $\\dim(\\operatorname{im}T)\\le 5$.",
+    "tags": ["Image, Kernel and Rank Nullity"]
+  },
+  {
+    "statement": "The space of solutions of the differential equation $f''+4f'+4f=0$ is 1-dimensional.",
+    "answer": false,
+    "explanation": "This is a second-order homogeneous linear differential equation, so its solution space is 2-dimensional. In fact, the general solution is $(c_1+c_2 t)e^{-2t}$.",
+    "tags": ["Linear Differential Equations"]
+  },
 
 // Quiz 1
 
