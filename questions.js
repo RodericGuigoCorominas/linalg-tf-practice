@@ -535,7 +535,7 @@ window.QUESTION_BANK = [
   statement: "If $T$ is a linear transformation from $\\mathbb{R}^5$ to $\\mathbb{R}^2$, then $\\dim(\\ker T)\\le 2$.",
   answer: false,
   explanation: "$\\dim(\\operatorname{im}T)\\le 2$, so by rank-nullity $\\dim(\\ker T)=5-\\dim(\\operatorname{im}T)\\ge 3$.",
-  tags: ["Image Kernel and Rank Nullity"]
+  tags: ["Image, Kernel and Rank Nullity"]
 },
 
 {
@@ -563,21 +563,21 @@ window.QUESTION_BANK = [
   statement: "The image of a matrix $A$ is always the same as the image of $\\operatorname{rref}(A)$.",
   answer: false,
   explanation: "For example, $A=\\begin{bmatrix}1&0\\\\2&0\\end{bmatrix}$ has image spanned by $\\begin{bmatrix}1\\\\2\\end{bmatrix}$, but $\\operatorname{rref}(A)=\\begin{bmatrix}1&0\\\\0&0\\end{bmatrix}$ has image spanned by $\\begin{bmatrix}1\\\\0\\end{bmatrix}$.",
-  tags: ["Image Kernel and Rank Nullity"]
+  tags: ["Image, Kernel and Rank Nullity"]
 },
 
 {
   statement: "If $A$ is a $3\\times 3$ matrix with $\\begin{bmatrix}1\\\\2\\\\3\\end{bmatrix}\\notin \\operatorname{im}(A)$, then $A$ cannot be invertible.",
   answer: true,
   explanation: "If $\\begin{bmatrix}1\\\\2\\\\3\\end{bmatrix}\\notin\\operatorname{im}(A)$, then $A\\vec{x}=\\begin{bmatrix}1\\\\2\\\\3\\end{bmatrix}$ is inconsistent, so $A$ cannot be invertible (invertible means $A\\vec{x}=\\vec{y}$ has a solution for every $\\vec{y}\\in\\mathbb{R}^3$).",
-  tags: ["Image Kernel and Rank Nullity"]
+  tags: ["Image, Kernel and Rank Nullity"]
 },
 
 {
   statement: "There is a matrix $A$ whose kernel is the single vector $\\begin{bmatrix}1\\\\1\\end{bmatrix}$.",
   answer: false,
   explanation: "The kernel of any matrix is a subspace and must contain $\\vec{0}$. The set $\\left\\{\\begin{bmatrix}1\\\\1\\end{bmatrix}\\right\\}$ is not a subspace of $\\mathbb{R}^2$.",
-  tags: ["Image Kernel and Rank Nullity"]
+  tags: ["Image, Kernel and Rank Nullity"]
 },
 
 {
@@ -607,34 +607,27 @@ window.QUESTION_BANK = [
   statement: "If $\\begin{bmatrix}1\\\\2\\\\5\\end{bmatrix}$ and $\\begin{bmatrix}3\\\\7\\\\2\\end{bmatrix}$ are solutions of a system $A\\vec{x}=\\vec{b}$, then $\\begin{bmatrix}2\\\\5\\\\-3\\end{bmatrix}$ is in $\\ker A$.",
   answer: true,
   explanation: "If $A\\vec{x}=\\vec{b}$ has solutions $\\vec{x}_1$ and $\\vec{x}_2$, then $A(\\vec{x}_2-\\vec{x}_1)=\\vec{b}-\\vec{b}=\\vec{0}$, so $\\vec{x}_2-\\vec{x}_1\\in\\ker A$. Here $\\begin{bmatrix}3\\\\7\\\\2\\end{bmatrix}-\\begin{bmatrix}1\\\\2\\\\5\\end{bmatrix}=\\begin{bmatrix}2\\\\5\\\\-3\\end{bmatrix}$.",
-  tags: ["Image Kernel and Rank Nullity"]
+  tags: ["Image, Kernel and Rank Nullity"]
 },
 
 {
   statement: "If $A$ is an $n\\times n$ matrix, the only vector in both $\\ker A$ and $\\operatorname{im} A$ is $\\vec{0}$.",
   answer: false,
   explanation: "It can happen that $\\ker A \\cap \\operatorname{im} A$ contains a nonzero vector (e.g., certain nilpotent matrices).",
-  tags: ["Image Kernel and Rank Nullity"]
+  tags: ["Image, Kernel and Rank Nullity"]
 },
 
 {
   statement: "There are $2\\times 2$ matrices $A$ and $B$ with rank 1 such that $AB$ has rank 0.",
   answer: true,
   explanation: "Let $A$ be projection onto the $x$-axis and $B$ be projection onto the $y$-axis in $\\mathbb{R}^2$. Then $\\operatorname{rank}(A)=\\operatorname{rank}(B)=1$ but $AB=0$, so $\\operatorname{rank}(AB)=0$.",
-  tags: ["Image Kernel and Rank Nullity"]
+  tags: ["Image, Kernel and Rank Nullity"]
 },
 
 {
   statement: "If $A$ is a $3\\times 3$ matrix such that $A\\vec{x}=\\begin{bmatrix}1\\\\2\\\\3\\end{bmatrix}$ has more than one solution, then $A$ cannot be invertible.",
   answer: true,
   explanation: "If $A$ were invertible, then $A\\vec{x}=\\vec{y}$ would have exactly one solution for every $\\vec{y}\\in\\mathbb{R}^3$. Having more than one solution for $\\vec{y}=\\begin{bmatrix}1\\\\2\\\\3\\end{bmatrix}$ contradicts invertibility.",
-  tags: ["Linear Systems"]
-},
-
-{
-  statement: "Let $A$ be a $5\\times 7$ matrix. If $A\\vec{x}=\\vec{0}$ has infinitely many solutions, then $A\\vec{x}=\\vec{b}$ has infinitely many solutions for every $\\vec{b}$ in $\\mathbb{R}^5$.",
-  answer: false,
-  explanation: "$A\\vec{x}=\\vec{b}$ could be inconsistent. For example, if $A$ is the zero matrix, then $A\\vec{x}=\\vec{0}$ has infinitely many solutions, but $A\\vec{x}=\\vec{b}$ is inconsistent for any nonzero $\\vec{b}$.",
   tags: ["Linear Systems"]
 },
 
@@ -649,7 +642,7 @@ window.QUESTION_BANK = [
   statement: "If $A$ is an invertible $3\\times 3$ matrix and $\\vec{v}_1,\\vec{v}_2,\\vec{v}_3$ are orthogonal vectors in $\\mathbb{R}^3$, then $A\\vec{v}_1, A\\vec{v}_2, A\\vec{v}_3$ are also orthogonal.",
   answer: false,
   explanation: "An invertible matrix need not preserve angles. For example, take $A=\\begin{bmatrix}1&1&1\\\\0&1&1\\\\0&0&1\\end{bmatrix}$. Then $\\vec{e}_1,\\vec{e}_2,\\vec{e}_3$ are orthogonal, but $A\\vec{e}_1, A\\vec{e}_2, A\\vec{e}_3$ (the columns of $A$) are not.",
-  tags: ["Orthogonal Matrices"]
+  tags: ["Linear Transformations"]
 },
 
 {
@@ -663,21 +656,21 @@ window.QUESTION_BANK = [
   statement: "There is a linear transformation $T:\\mathbb{R}^2\\to\\mathbb{R}^3$ whose rank and nullity are the same.",
   answer: true,
   explanation: "For example, the matrix $\\begin{bmatrix}1&0\\\\0&0\\\\0&0\\end{bmatrix}$ defines a map with rank 1 and nullity 1.",
-  tags: ["Image Kernel and Rank Nullity"]
+  tags: ["Image, Kernel and Rank Nullity"]
 },
 
 {
   statement: "If $L$ is a line through the origin in $\\mathbb{R}^6$ and $\\vec{x}\\in\\mathbb{R}^6$, then $(\\operatorname{proj}_L\\vec{x})\\cdot(\\vec{x}-\\operatorname{proj}_L\\vec{x})=0$.",
   answer: true,
   explanation: "By the definition of orthogonal projection, $\\vec{x}-\\operatorname{proj}_L\\vec{x}$ is orthogonal to $L$, while $\\operatorname{proj}_L\\vec{x}$ lies in $L$. Hence they are orthogonal and their dot product is 0.",
-  tags: ["Orthogonal Matrices"]
+  tags: ["Geometric Transformations"]
 },
 
 {
   statement: "If $A$ and $B$ are $15\\times 15$ matrices, then $\\operatorname{im}(AB)$ is contained in $\\operatorname{im}(B)$.",
   answer: false,
   explanation: "In general, $\\operatorname{im}(AB)\\subseteq \\operatorname{im}(A)$, not necessarily $\\operatorname{im}(B)$. For example, if $B$ is projection onto the $x$-axis in $\\mathbb{R}^2$ and $A$ is rotation by $90^\\circ$, then $\\operatorname{im}(B)$ is the $x$-axis but $\\operatorname{im}(AB)$ is the $y$-axis.",
-  tags: ["Image Kernel and Rank Nullity"]
+  tags: ["Image, Kernel and Rank Nullity"]
 },
 
 {
@@ -698,7 +691,7 @@ window.QUESTION_BANK = [
   statement: "If $T:\\mathbb{R}^3\\to\\mathbb{R}^4$ is a linear transformation whose kernel is a plane, then $\\operatorname{im}T$ is 2-dimensional.",
   answer: false,
   explanation: "If $\\ker T$ is a plane, then $\\dim(\\ker T)=2$. By rank-nullity, $\\dim(\\operatorname{im}T)=3-2=1$.",
-  tags: ["Image Kernel and Rank Nullity"]
+  tags: ["Image, Kernel and Rank Nullity"]
 },
 
 {
@@ -712,7 +705,7 @@ window.QUESTION_BANK = [
   statement: "If $T:\\mathbb{R}^2\\to\\mathbb{R}^2$ is a linear transformation and $\\mathfrak{B}$ is a basis of $\\mathbb{R}^2$ such that the $\\mathfrak{B}$-matrix of $T$ is $\\begin{bmatrix}1&0\\\\0&0\\end{bmatrix}$, then $T$ is orthogonal projection onto a line in $\\mathbb{R}^2$.",
   answer: false,
   explanation: "In some bases this matrix represents a projection, but not necessarily an *orthogonal* projection. For example, let $\\vec{v}_1=\\begin{bmatrix}1\\\\0\\end{bmatrix}$ and $\\vec{v}_2=\\begin{bmatrix}1\\\\1\\end{bmatrix}$ (not orthogonal). Define $T(\\vec{v}_1)=\\vec{v}_1$ and $T(\\vec{v}_2)=\\vec{0}$. Then the $\\mathfrak{B}$-matrix is $\\begin{bmatrix}1&0\\\\0&0\\end{bmatrix}$ but $T$ is not orthogonal projection.",
-  tags: ["Orthogonal Matrices"]
+  tags: ["Geometric Transformations"]
 },
 
 {
@@ -777,7 +770,7 @@ window.QUESTION_BANK = [
   statement: "There exists a $2\\times 2$ matrix $A$ such that $\\begin{bmatrix}1&0\\\\2&4\\end{bmatrix}A$ represents the orthogonal projection onto the line $y=3x$.",
   answer: true,
   explanation: "Let $M=\\begin{bmatrix}1&0\\\\2&4\\end{bmatrix}$, which is invertible. If $P$ is the projection matrix onto $y=3x$, then choosing $A=M^{-1}P$ gives $MA=P$.",
-  tags: ["Orthogonal Matrices"]
+  tags: ["Geometric Transformations"]
 },
 
 {
@@ -847,21 +840,21 @@ window.QUESTION_BANK = [
   statement: "If $A$ is a $2\\times 5$ matrix and $\\text{nullity}(A)=3$, then $A\\vec{x}=\\vec{b}$ is consistent for all $\\vec{b}$ in $\\mathbb{R}^2$.",
   answer: true,
   explanation: "Rank-nullity gives $\\operatorname{rank}(A)+\\operatorname{nullity}(A)=5$, so $\\operatorname{rank}(A)=2$. Thus $\\operatorname{im}(A)$ is 2-dimensional in $\\mathbb{R}^2$, meaning $\\operatorname{im}(A)=\\mathbb{R}^2$ and $A\\vec{x}=\\vec{b}$ is consistent for all $\\vec{b}\\in\\mathbb{R}^2$.",
-  tags: ["Image Kernel and Rank Nullity"]
+  tags: ["Image, Kernel and Rank Nullity"]
 },
 
 {
   statement: "If $A$ and $B$ are $n\\times n$ matrices and $A$ is invertible, then $\\ker(AB)=\\ker(B)$.",
   answer: true,
   explanation: "$AB\\vec{x}=0 \\iff A(B\\vec{x})=0$. Since $A$ is invertible, $A\\vec{y}=0\\iff \\vec{y}=0$, so this is equivalent to $B\\vec{x}=0$.",
-  tags: ["Image Kernel and Rank Nullity"]
+  tags: ["Image, Kernel and Rank Nullity"]
 },
 
 {
   statement: "If $A$ and $B$ are $n\\times n$ matrices and $A$ is invertible, then $\\operatorname{im}(AB)=\\operatorname{im}(B)$.",
-  answer: true,
+  answer: false,
   explanation: "Because $A$ is invertible, $A$ maps $\\operatorname{im}(B)$ bijectively onto $\\operatorname{im}(AB)=A(\\operatorname{im}(B))$. In general this need not equal $\\operatorname{im}(B)$ unless $A$ preserves that subspace.",
-  tags: ["Image Kernel and Rank Nullity"]
+  tags: ["Image, Kernel and Rank Nullity"]
 },
 
 // Midterm 1 Spring 2026
@@ -2430,7 +2423,7 @@ window.QUESTION_BANK = [
 // Quiz 8
 
 {
-  statement: "If $2 + 3i$ is an eigenvalue of a $2 \\times 2$ matrix $A$, then $A$ is diagonalizable.",
+  statement: "If $2 + 3i$ is an eigenvalue of a real $2 \\times 2$ matrix $A$, then $A$ is diagonalizable.",
   answer: true,
   explanation: "For a real $2 \\times 2$ matrix, non-real eigenvalues occur in conjugate pairs. Thus $2-3i$ is also an eigenvalue. Since the eigenvalues are distinct, $A$ is diagonalizable over $\\mathbb{C}$.",
   tags: ["Diagonalization"]
