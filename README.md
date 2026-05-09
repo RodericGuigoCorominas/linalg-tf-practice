@@ -34,15 +34,8 @@ Edit `config.js`:
 window.APP_CONFIG = {
   title: "My Title",
 
-  subtitle:
-    "My subtitle",
-
   intro:
     "My intro.",
-
-  questionCount: 10,
-
-  attemptCooldownMinutes: 10,
 
   categories: [
     "Topic 1",
