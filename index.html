@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Linear Algebra: True/False Practice</title>
+  <title>True/False Practice</title>
 
   <!-- MathJax for LaTeX rendering -->
   <script>
@@ -333,21 +333,28 @@ button.secondary:hover{
 }
   </style>
 
-  <!-- Question bank (separate file) -->
+  <!-- Config and Question bank (separate files) -->
+  <script src="./config.js"></script>
   <script src="./questions.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const CONFIG = window.APP_CONFIG;
+
+      document.getElementById("app-title").textContent = CONFIG.title;
+      document.getElementById("app-intro").innerHTML = CONFIG.intro;
+    });
+  </script>
+
+
 </head>
 
 <body>
   <div class="container">
-    <h1>Linear Algebra True/False Practice</h1>
+    <h1 id="app-title"></h1>
 
     <!-- Start screen -->
     <div id="startScreen" class="card">
-      <p class="muted">
-        Hello! This practice gives you the opportunity to test yourself and answer
-        <strong>10 random True/False questions</strong> from a preset bank.
-        When you submit, you’ll see which were correct and the explanations. These questions are <strong>not</strong> AI generated.
-      </p>
+      <p class="muted" id="app-intro"></p>
 
       <div class="tagBox">
         <div class="tagTitle">Choose topics:</div>
@@ -417,29 +424,9 @@ button.secondary:hover{
       // ----------------------------
       // Tags (topic selection)
       // ----------------------------
-      const ALL_TAGS = [
-        "Linear Systems",
-        "Linear Transformations",
-        "Geometric Transformations",
-        "Linear Combinations",
-        "Subspaces",
-        "Matrix Inverses",
-        "Coordinates",
-        "Image, Kernel and Rank Nullity",
-        "Orthogonal Matrices",
-        "Least Squares",
-        "Determinants",
-        "Discrete Dynamical Systems",
-        "Diagonalization",
-        "Continuous Dynamical Systems",
-        "Nonlinear Continuous Dynamical Systems",
-        "Symmetric Matrices and the Spectral Theorem",
-        "Linear Differential Equations",
-        "Abstract Linear Spaces",
-        "Abstract Linear Transformations",
-        "Inner Products",
-        "Partial Differential Equations",
-      ];
+      const CONFIG = window.APP_CONFIG || {};
+
+      const ALL_TAGS = CONFIG.categories || [];
 
       const TAGS_KEY = "la_tf_selected_tags_v1";
 

@@ -1,12 +1,7 @@
 window.APP_CONFIG = {
-  title: "Linear Algebra True/False Practice",
+  title: "Linear Algebra and Differential Equations True/False Practice",
 
-  intro:
-    "Practice your understanding with a bank of human-written True/False questions. Answer 10 random True/False questions from the selected topics. When you submit, you’ll see which answers were correct and read the explanations.",
-
-  questionCount: 10,
-
-  attemptCooldownMinutes: 10,
+  intro: "Practice your understanding with a bank of human-written True/False questions. Answer 10 random True/False questions from the selected topics. When you submit, you’ll see which answers were correct and read the explanations.",
 
   categories: [
     "Linear Systems", 
