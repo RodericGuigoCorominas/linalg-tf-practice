@@ -32,13 +32,13 @@ Edit `config.js`:
 
 ```js
 window.APP_CONFIG = {
-  title: "My True/False Practice",
+  title: "My Title",
 
   subtitle:
-    "Practice your understanding with a bank of True/False questions.",
+    "My subtitle",
 
   intro:
-    "Answer a random selection of questions. When you submit, you’ll see explanations.",
+    "My intro.",
 
   questionCount: 10,
 
